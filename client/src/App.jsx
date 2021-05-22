@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Pantry from './components/Pantry_Page/index'
 import Nav from './components/Home_Page/navigation'
-import Recipe from './components/Home_Page/index'
+import Home from './components/Home_Page/index'
 
 const App = () => {
 
@@ -27,6 +27,7 @@ const App = () => {
       return (
         <div>
           <h1>Recipe List</h1>
+          <Home />
           </div>
       )
     } else if (view === 'pantryList') {
