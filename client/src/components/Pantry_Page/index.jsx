@@ -1,11 +1,7 @@
-import React, {useEffect, useContext, useState} from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 
-const Pantry = () => {
-
-  return (
-    <div>
-    </div>
-  )
-}
+const Pantry = () => (
+  <div />
+);
 
 export default Pantry;
