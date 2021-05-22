@@ -1,9 +1,15 @@
 /* eslint-disable */
-import React, { useEffect, useContext, useState } from 'react';
+import React from 'react';
 
 const Recipe = (props) => {
   return (
-    <div></div>
+    <ul>
+      {props.recipeList.map((recipe, i) =>
+        <li key={i}>
+          {recipe.id}
+        </li>
+      )}
+    </ul>
   )
 }
 
