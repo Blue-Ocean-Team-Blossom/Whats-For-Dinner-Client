@@ -10,6 +10,11 @@ const Recipe = () => {
   const { recipe } = useContext(RecipeContext);
   // const {  } = useContext(APIContext);
 
+  // useEffect(() => {
+  //   getRecipesByPantry();
+  //   getPantry();
+  // }, [])
+
   return (
     <div></div>
   )

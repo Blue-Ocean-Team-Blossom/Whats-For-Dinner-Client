@@ -4,7 +4,7 @@
 // var { getRecipesByIngredients, autocompleteIngredient } = require('');
 
 module.exports = {
-  getRecipesByIngredients: [
+  autocompleteIngredient: [
     {
       name: 'apple',
       image: 'apple.jpg',
@@ -86,7 +86,7 @@ module.exports = {
       ],
     },
   ],
-  autocompleteIngredient: [
+  getRecipesByIngredients: [
     {
       id: 73420,
       image: 'https://spoonacular.com/recipeImages/73420-312x231.jpg',
