@@ -1,11 +1,11 @@
 /* eslint-disable */
 import React, { useEffect, useContext, useState } from 'react';
 import PantryItem from './PantryItem';
-// import { PantryContext } from '../../../state_&_contexts/PantryContext';
+import { PantryContext } from '../../../state_&_contexts/PantryContext';
 // import { APIContext } from '../../../state_&_contexts/APIContext';
 
 const PantryList = (props) => {
-// const { pantry } = useContext(PantryContext);
+const { pantry, setPantry } = useContext(PantryContext);
 // const { getPantry } = useContext(APIContext);
 
 // useEffect(() => {
@@ -14,11 +14,13 @@ const PantryList = (props) => {
 
 // console.log(props.pantryList);
 
+var pantryList = props.pantryList;
+
   return (
     <div>
       <h1>Your Pantry</h1>
-      {props.pantryList.map(item =>
-        <PantryItem item={item}/>
+      {pantryList.map(item =>
+        <PantryItem key={item.id} item={item}/>
       )}
     </div>
   );
