@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React from 'react';
-import Pantry from './components/Pantry_Page/index'
+import Pantry from './components/Pantry_Page/index';
+import Home from './components/Home_Page/index';
 
 const App = () => {
   return (
@@ -8,6 +9,7 @@ const App = () => {
       <h1>
         This is Working!
       </h1>
+      <Home />
       <Pantry />
     </div>
   );
