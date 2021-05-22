@@ -10,21 +10,20 @@ import axios from 'axios';
 const Home = () => {
   const { pantry } = useContext(PantryContext);
   const { recipe } = useContext(RecipeContext);
-  // const {  } = useContext(APIContext);
+  const { getPantry } = useContext(APIContext);
 
-  // useEffect(() => {
-  //   getPantry();
-  //   getRecipesByPantry();
-  // }, [])
+  useEffect(() => {
+    getPantry();
+    // getRecipesByPantry();
+  }, [])
 
-  let pantrylist = pantry.slice();
-  let recipelist = recipe.slice();
+  let pantrylist = '';
 
   return (
     <div>
       <h1>This is the Home Page</h1>
       <FilteredRecipe />
-      <Recipe recipe={recipelist}/>
+      <Recipe recipeList={recipe}/>
     </div>
   )
 };
