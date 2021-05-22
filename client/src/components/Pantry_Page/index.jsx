@@ -1,4 +1,4 @@
-import React, {useEffect, useContext, useState} = require('react');
+import React, {useEffect, useContext, useState} from 'react';
 
 const Pantry = () => {
 
