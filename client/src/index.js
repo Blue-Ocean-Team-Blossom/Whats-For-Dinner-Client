@@ -2,4 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+import { RootProvider } from './state_&_contexts/RootContext';
+
+ReactDOM.render(
+  <RootProvider>
+    <App />
+  </RootProvider>,
+  document.getElementById('app'),
+);
