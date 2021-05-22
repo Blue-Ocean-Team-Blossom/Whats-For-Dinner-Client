@@ -34,6 +34,14 @@ const APIProvider = ({ children }) => {
     return;
   }
 
+  const addPantry = async () => {
+    //Send insert request
+  }
+
+  const deletePantry = async () => {
+    //Send delete request
+  }
+
   /*******************************************************************************************/
 
   return (
