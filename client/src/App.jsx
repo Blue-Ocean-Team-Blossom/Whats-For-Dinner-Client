@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Pantry from './components/Pantry_Page/index'
 import Nav from './components/Home_Page/navigation'
 import Recipe from './components/Home_Page/index'
@@ -10,10 +10,14 @@ const App = () => {
   //let view = 'recipeList';
   const [view, setView] = useState('recipeList')
 
+  //update the view to render
+  useEffect(() => {
+    renderView(view)
+  })
+
   //changeView function to toggle the view variable
   const changeView = (updateView) => {
     setView(updateView)
-    renderView(view)
   }
 
 
@@ -29,6 +33,7 @@ const App = () => {
       return (
         <div>
           <h1>Pantry List</h1>
+          <Pantry />
           </div>
       )
     }
@@ -38,7 +43,7 @@ const App = () => {
   return (
     <div>
       <div><Nav changeView={changeView}/></div>
-      <div>{renderView(view)}</div>
+      <div>{renderView()}</div>
     </div>
   );
 };
