@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useContext, useState } from 'react';
 import PantryForm from './PantryForm';
 import PantryList from './PantryList/PantryList';
