@@ -5,12 +5,15 @@ export const RecipeContext = createContext({});
 
 const RecipeProvider = ({ children }) => {
   const [recipe, setRecipe] = useState([]);
+  const [filteredrecipe, setFilteredrecipe] = useState([]);
 
   return (
     <RecipeContext.Provider
       value={{
         recipe,
         setRecipe,
+        filteredrecipe,
+        setFilteredrecipe,
       }}
     >
       {children}
