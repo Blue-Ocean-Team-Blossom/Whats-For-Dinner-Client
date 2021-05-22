@@ -15,14 +15,15 @@ const APIProvider = ({ children }) => {
 
   /****************************************Pantry*********************************************/
   const getPantry = () => {
-    var sampleItem = {
+    var sampleItem = [{
       id: 1,
       userId: 1,
-      ingredientId: 1
+      ingredientId: 1,
       ingredient: 'something',
       quantity: 1
-    }
-    return sampleItem;
+    }]
+    setPantry(sampleItem);
+    return;
   }
 
   /*******************************************************************************************/
