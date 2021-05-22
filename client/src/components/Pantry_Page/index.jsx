@@ -1,7 +1,10 @@
 import React, { useEffect, useContext, useState } from 'react';
+import PantryForm from './PantryForm';
 
 const Pantry = () => (
-  <div />
+  <div>
+    <PantryForm />
+  </div>
 );
 
 export default Pantry;
