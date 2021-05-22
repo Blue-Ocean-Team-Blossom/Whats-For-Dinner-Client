@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import APIProvider from './APIContext';
 import RecipeProvider from './RecipeContext';

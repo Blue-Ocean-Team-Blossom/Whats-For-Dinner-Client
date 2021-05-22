@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { createContext, useContext, useState } from 'react';
 
 export const PantryContext = createContext({});

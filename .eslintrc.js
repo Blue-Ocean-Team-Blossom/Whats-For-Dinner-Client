@@ -3,6 +3,10 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  globals: {
+    window: true,
+    document: true,
+  },
   extends: [
     'plugin:react/recommended',
     'airbnb',
@@ -18,5 +22,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'import/prefer-default-export': 'off',
   },
 };
