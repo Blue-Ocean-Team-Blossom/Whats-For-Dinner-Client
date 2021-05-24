@@ -4,8 +4,8 @@ import React from 'react';
 const Nav = (props) => {
   return (
     <div>
-      <button onClick={() => props.changeView('recipeList')}>Home</button>
-      <button onClick={() => props.changeView('pantryList')}>Pantry</button>
+      <button className='btn fill' onClick={() => props.changeView('recipeList')}>Home</button>
+      <button className='btn fill' onClick={() => props.changeView('pantryList')}>Pantry</button>
     </div>
   )
 }
