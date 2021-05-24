@@ -11,9 +11,11 @@ describe('Pantry Form', () => {
 
   test('Renders Pantry Form inputs', () => {
     const wrapper = shallow(<PantryForm />);
-    expect(wrapper.find('#item')).toHaveLength(1);
-    expect(wrapper.find('#item').type()).toEqual('input');
-    expect(wrapper.find('#unit').type()).toEqual('input');
-    expect(wrapper.find('#quantity').type()).toEqual('input');
+    expect(wrapper.find('#pantryFormItem')).toHaveLength(1);
+    expect(wrapper.find('#pantryFormUnit')).toHaveLength(1);
+    expect(wrapper.find('#pantryFormQuantity')).toHaveLength(1);
+    expect(wrapper.find('#pantryFormItem').type()).toEqual('input');
+    expect(wrapper.find('#pantryFormUnit').type()).toEqual('input');
+    expect(wrapper.find('#pantryFormQuantity').type()).toEqual('input');
   });
 });
