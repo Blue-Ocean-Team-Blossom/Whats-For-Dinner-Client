@@ -13,14 +13,41 @@ const APIProvider = ({ children }) => {
 
 
   /****************************************Pantry*********************************************/
-  const getPantry = async () => {
-    var pantryList = await axios.get('/pantry')
+  const getPantry = async (userId) => {
+    var pantryList = await axios.get(`http://3.135.209.178/pantry?id=1`)
     setPantry(pantryList.data);
-    return;
   }
 
-  const deleteFromPantry = async (id) => {
-    axios.delete(`/pantry/${id}`)
+  const deleteFromPantry = async (id, userId) => {
+    console.log('id: ', id);
+    // axios.delete(`/pantry`, {
+    //   data: {
+    //     id: id
+    //   }
+    // })
+    // .then (() => {
+    //   getPantry(userId)
+    // })
+    // .catch (err => {
+    //   console.log(err)
+    // })
+  }
+
+  const updateItem = async(id, userId, quantity) => {
+    var updateData = {
+      pantryId: id,
+      quantity: quantity
+    }
+    // console.log(updateData);
+    axios.put(`http://3.135.209.178/pantry`, {
+      data: updateData
+    })
+    .then (() => {
+      getPantry(userId)
+    })
+    .catch (err => {
+      console.log(err)
+    })
   }
 
   const addToPantry = (e) => {
@@ -41,6 +68,7 @@ const APIProvider = ({ children }) => {
       getPantry,
       deleteFromPantry,
       addToPantry,
+      updateItem,
     }}
     >
       {children}

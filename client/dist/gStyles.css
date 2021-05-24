@@ -90,6 +90,10 @@ h1 {
   margin-left: 5%;
   width: 80%;
   display: inline-grid;
-  grid-template-columns: 40% 30% 15%;
+  grid-template-columns: 40% 30% 15% 15%;
   align-items: center;
+}
+
+#updateQuantity {
+  width: 30%;
 }
