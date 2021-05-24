@@ -1,12 +1,10 @@
 import React from 'react';
-import { shallow, render } from '../../enzyme.setup';
+import { shallow } from 'enzyme';
 import App from '../../client/src/App';
 
 describe('App Component', () => {
   test('Renders App Component', () => {
-    const wrapper = shallow(
-      <App />,
-    );
-    expect(wrapper.exists()).toBe(true);
+    const wrapper = shallow(<App />);
+    // console.log(wrapper.debug()); // shows html inside rendered component
   });
 });

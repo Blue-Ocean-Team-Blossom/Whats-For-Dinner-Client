@@ -27,22 +27,15 @@
   "homepage": "https://github.com/Blue-Ocean-Team-Blossom/Whats-For-Dinner-Client#readme",
   "dependencies": {
     "@babel/core": "^7.14.3",
-    "@babel/plugin-syntax-jsx": "^7.12.13",
     "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "@babel/preset-react": "^7.13.13",
-    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.1",
+    "@babel/runtime": "^7.14.0",
     "axios": "^0.21.1",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.1.0",
-    "babel-jest": "^26.6.3",
+    "babel": "^6.23.0",
     "babel-loader": "^8.2.2",
     "dotenv": "^10.0.0",
-    "enzyme": "^3.11.0",
-    "eslint-loader": "^4.0.2",
     "express": "^4.17.1",
-    "jest": "^26.6.3",
-    "jest-css-modules": "^2.1.0",
     "jest-enzyme": "^7.1.2",
     "nodemon": "^2.0.7",
     "react": "^17.0.2",
@@ -53,16 +46,27 @@
   },
   "devDependencies": {
     "eslint": "^7.26.0",
+    "eslint-loader": "^4.0.2",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.23.2",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.6.3",
+    "jest": "^26.6.3",
+    "jest-css-modules-transform": "^4.2.1",
+    "jest-enzyme": "^7.1.2",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6"
   },
   "jest": {
-    "verbose": true,
-    "moduleNameMapper": {
-      "\\.(css|less)$": "<rootDir>/node_modules/jest-css-modules"
+    "setupFilesAfterEnv": [
+      "<rootDir>tests/setupTests.js"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest",
+      ".+\\.(css|styl|less|sass|scss)$": "jest-css-modules-transform"
     }
   }
 }
