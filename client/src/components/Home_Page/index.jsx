@@ -8,12 +8,10 @@ import { RecipeContext } from '../../state_&_contexts/RecipeContext';
 import { APIContext } from '../../state_&_contexts/APIContext';
 
 const Home = () => {
-  const { pantry } = useContext(PantryContext);
   const { recipe } = useContext(RecipeContext);
-  const { getPantry, getRecipesByPantry } = useContext(APIContext);
+  const { getRecipesByPantry } = useContext(APIContext);
 
   useEffect(() => {
-    getPantry();
     getRecipesByPantry();
   }, [])
 
