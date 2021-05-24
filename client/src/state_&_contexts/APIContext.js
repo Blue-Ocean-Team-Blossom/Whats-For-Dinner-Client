@@ -7,15 +7,9 @@ import { PantryContext } from './PantryContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
-<<<<<<< HEAD
 
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
   const { pantry, setPantry } = useContext(PantryContext);
-
-
-=======
-  const { pantry, setPantry } = useContext(PantryContext);
->>>>>>> 1fc0a9af10659a58d8a0983491a88b315c3267be
 
   /*********************************FUNCTION CALLS GO HERE************************************/
 
