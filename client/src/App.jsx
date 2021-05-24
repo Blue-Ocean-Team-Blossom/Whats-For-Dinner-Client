@@ -25,17 +25,17 @@ const App = () => {
   const renderView = (currentView) => {
     if (view === 'recipeList') {
       return (
-        <div>
+        <div className='mainSubContainer'>
           <h1>Recipe List</h1>
           <Home />
-          </div>
+        </div>
       )
     } else if (view === 'pantryList') {
       return (
-        <div>
+        <div className='mainSubContainer'>
           <h1>Pantry List</h1>
           <Pantry />
-          </div>
+        </div>
       )
     }
   }
@@ -44,7 +44,7 @@ const App = () => {
   return (
     <div>
       <div><Nav changeView={changeView}/></div>
-      <div>{renderView()}</div>
+      <div className='mainContainer'>{renderView()}</div>
     </div>
   );
 };
