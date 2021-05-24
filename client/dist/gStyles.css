@@ -59,3 +59,11 @@ html, body {
 .fill:hover:before {
   top: 0;
 }
+
+a:link {
+  color: lightblue;
+}
+
+a:visited {
+  color: lightgoldenrodyellow;
+}

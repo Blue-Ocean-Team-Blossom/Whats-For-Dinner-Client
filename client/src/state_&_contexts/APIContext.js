@@ -66,7 +66,6 @@ const APIProvider = ({ children }) => {
   const getRecipeById = async (id) => {
     axios.get(`/Recipe/${id}`)
       .then((success) => {
-        console.log(success.data.summary);
         setRecipeinfo(success.data);
         return;
       })
