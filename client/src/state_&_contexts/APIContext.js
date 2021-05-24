@@ -19,18 +19,14 @@ const APIProvider = ({ children }) => {
   }
 
   const deleteFromPantry = async (id, userId) => {
-    console.log('id: ', id);
-    // axios.delete(`/pantry`, {
-    //   data: {
-    //     id: id
-    //   }
-    // })
-    // .then (() => {
-    //   getPantry(userId)
-    // })
-    // .catch (err => {
-    //   console.log(err)
-    // })
+    console.log(typeof(id));
+    axios.delete(`http://3.135.209.178/pantry`, {data: {id: id}})
+    .then (() => {
+      getPantry(userId)
+    })
+    .catch (err => {
+      console.log(err)
+    })
   }
 
   const updateItem = async(id, userId, quantity) => {
@@ -38,10 +34,8 @@ const APIProvider = ({ children }) => {
       pantryId: id,
       quantity: quantity
     }
-    // console.log(updateData);
-    axios.put(`http://3.135.209.178/pantry`, {
-      data: updateData
-    })
+    console.log(typeof(quantity));
+    axios.put(`http://3.135.209.178/pantry`, updateData)
     .then (() => {
       getPantry(userId)
     })
