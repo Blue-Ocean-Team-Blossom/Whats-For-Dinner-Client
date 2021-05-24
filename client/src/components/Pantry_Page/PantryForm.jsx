@@ -1,6 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { APIContext } from '../../state_&_contexts/APIContext';
-import styles from './pantryForm.module.css';
 
 const PantryForm = () => {
   const { addToPantry } = useContext(APIContext);
