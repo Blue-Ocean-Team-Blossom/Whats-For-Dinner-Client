@@ -8,7 +8,7 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
 
-  const { setPantry } = useContext(PantryContext);
+  const { pantry, setPantry } = useContext(PantryContext);
 
   /*********************************FUNCTION CALLS GO HERE************************************/
 
@@ -34,13 +34,23 @@ const APIProvider = ({ children }) => {
     return;
   }
 
+  const addToPantry = (e) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    // const pantryCopy = pantry.slice()
+    // pantryCopy.push(item);
+    // setPantry(pantryCopy);
+    return;
+  }
+
   /*******************************************************************************************/
 
   return (
     <APIContext.Provider value={{
       /* Include functions here */
       //Pantry
-      getPantry
+      getPantry,
+      addToPantry
     }}>
       {children}
     </APIContext.Provider>
