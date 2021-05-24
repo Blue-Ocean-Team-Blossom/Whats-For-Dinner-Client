@@ -4,8 +4,6 @@ import PantryItem from './PantryItem';
 import { PantryContext } from '../../../state_&_contexts/PantryContext';
 import { APIContext } from '../../../state_&_contexts/APIContext';
 
-import './pantryList.css';
-
 const PantryList = () => {
   const { pantry, setPantry } = useContext(PantryContext);
   const { getPantry, deleteFromPantry } = useContext(APIContext);
@@ -30,8 +28,12 @@ const PantryList = () => {
   }
 
   return (
-    <div>
-      <h1>Your Pantry</h1>
+    <div id='pantryList'>
+      <h2>Your Pantry</h2>
+      <div id='pantryListHeader'>
+        <h2>Item</h2>
+        <h2>Quantity</h2>
+      </div>
       {pantryList.map(item =>
         <PantryItem key={item.id} item={item} delete={deleteEntry}/>
       )}
