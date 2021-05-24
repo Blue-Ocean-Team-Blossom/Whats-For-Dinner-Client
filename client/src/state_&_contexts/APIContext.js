@@ -16,23 +16,13 @@ const APIProvider = ({ children }) => {
 
   /****************************************Pantry*********************************************/
   const getPantry = async () => {
-    var sampleItem = [{
-      id: 1,
-      userId: 1,
-      ingredientId: 1,
-      ingredient: 'something',
-      quantity: 1
-    },
-    {
-      id: 2,
-      userId: 1,
-      ingredientId: 2,
-      ingredient: 'something else',
-      quantity: 2
-    }
-    ]
-    setPantry(sampleItem);
+    var pantryList = await axios.get('/pantry')
+    setPantry(pantryList.data);
     return;
+  }
+
+  const deleteFromPantry = async (id) => {
+    axios.delete(`/pantry/${id}`)
   }
 
   const addToPantry = (e) => {
@@ -81,6 +71,7 @@ const APIProvider = ({ children }) => {
       /* Include functions here */
       //Pantry
       getPantry,
+      deleteFromPantry,
       addToPantry,
       //Recipes
       getRecipesByPantry,
