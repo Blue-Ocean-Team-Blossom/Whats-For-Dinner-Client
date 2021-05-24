@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useState } from 'react';
-// var { getRecipesByIngredients, autocompleteIngredient } = require('');
 import { APIContext } from '../../state_&_contexts/APIContext';
 
 const PantryForm = () => {
