@@ -2,7 +2,7 @@
 
 
 ## Checklist
-### PR Type (Select all that apply and decribe above):
+### PR Type (Select all that apply and describe above):
 - [ ] Bug fix
 - [ ] Refactor
 - [ ] New Feature
