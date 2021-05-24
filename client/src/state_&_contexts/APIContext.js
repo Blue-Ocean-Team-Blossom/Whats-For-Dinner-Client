@@ -7,11 +7,15 @@ import { PantryContext } from './PantryContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
+<<<<<<< HEAD
 
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
   const { pantry, setPantry } = useContext(PantryContext);
 
 
+=======
+  const { pantry, setPantry } = useContext(PantryContext);
+>>>>>>> 1fc0a9af10659a58d8a0983491a88b315c3267be
 
   /*********************************FUNCTION CALLS GO HERE************************************/
 
@@ -36,6 +40,15 @@ const APIProvider = ({ children }) => {
     setPantry(sampleItem);
     return;
   }
+
+  const addToPantry = (e) => {
+    e.preventDefault();
+    const [item, quantity] = [e.target[0].value, e.target[2].value];
+    const pantryAddParse = { ingredient: item, quantity };
+    const pantryCopy = pantry.slice();
+    pantryCopy.push(pantryAddParse);
+    setPantry(pantryCopy);
+  };
 
   /*******************************************************************************************/
 
@@ -75,12 +88,15 @@ const APIProvider = ({ children }) => {
       /* Include functions here */
       //Pantry
       getPantry,
+      addToPantry,
+      //Recipes
       getRecipesByPantry,
       getRecipeById,
-    }}>
+    }}
+    >
       {children}
     </APIContext.Provider>
-  )
+  );
 };
 
 export default APIProvider;
