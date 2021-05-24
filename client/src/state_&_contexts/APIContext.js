@@ -7,7 +7,6 @@ import { PantryContext } from './PantryContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
-
   const { pantry, setPantry } = useContext(PantryContext);
 
   /*********************************FUNCTION CALLS GO HERE************************************/
@@ -36,12 +35,12 @@ const APIProvider = ({ children }) => {
 
   const addToPantry = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
-    // const pantryCopy = pantry.slice()
-    // pantryCopy.push(item);
-    // setPantry(pantryCopy);
-    return;
-  }
+    const [item, quantity] = [e.target[0].value, e.target[2].value];
+    const pantryAddParse = { ingredient: item, quantity };
+    const pantryCopy = pantry.slice();
+    pantryCopy.push(pantryAddParse);
+    setPantry(pantryCopy);
+  };
 
   /*******************************************************************************************/
 
@@ -50,11 +49,12 @@ const APIProvider = ({ children }) => {
       /* Include functions here */
       //Pantry
       getPantry,
-      addToPantry
-    }}>
+      addToPantry,
+    }}
+    >
       {children}
     </APIContext.Provider>
-  )
+  );
 };
 
 export default APIProvider;
