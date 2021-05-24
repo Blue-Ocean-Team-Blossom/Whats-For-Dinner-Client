@@ -34,11 +34,7 @@ const APIProvider = ({ children }) => {
     return;
   }
 
-  const addPantry = async () => {
-    //Send insert request
-  }
-
-  const deletePantry = async () => {
+  const deleteFromPantry = async () => {
     //Send delete request
   }
 
@@ -48,7 +44,8 @@ const APIProvider = ({ children }) => {
     <APIContext.Provider value={{
       /* Include functions here */
       //Pantry
-      getPantry
+      getPantry,
+      deleteFromPantry
     }}>
       {children}
     </APIContext.Provider>
