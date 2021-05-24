@@ -76,3 +76,20 @@ h1 {
 .fill:hover:before {
   top: 0;
 }
+
+#pantryListHeader {
+  width: 80%;
+  margin-left: 5%;
+  display: inline-grid;
+  grid-template-columns: 40% 30% auto;
+  text-decoration: underline;
+  align-self: center;
+}
+
+#pantryItem {
+  margin-left: 5%;
+  width: 80%;
+  display: inline-grid;
+  grid-template-columns: 40% 30% 15%;
+  align-items: center;
+}

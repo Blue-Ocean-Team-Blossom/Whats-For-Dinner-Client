@@ -1,24 +1,41 @@
 /* eslint-disable */
 import React, { useEffect, useContext, useState } from 'react';
 import PantryItem from './PantryItem';
-// import { PantryContext } from '../../../state_&_contexts/PantryContext';
-// import { APIContext } from '../../../state_&_contexts/APIContext';
+import { PantryContext } from '../../../state_&_contexts/PantryContext';
+import { APIContext } from '../../../state_&_contexts/APIContext';
 
-const PantryList = (props) => {
-// const { pantry } = useContext(PantryContext);
-// const { getPantry } = useContext(APIContext);
+const PantryList = () => {
+  const { pantry, setPantry } = useContext(PantryContext);
+  const { getPantry, deleteFromPantry } = useContext(APIContext);
 
-// useEffect(() => {
-//   getPantry();
-// }, []);
+  useEffect(() => {
+    getPantry();
+  }, []);
 
-// console.log(props.pantryList);
+  // console.log(props.pantryList);
+
+  var pantryList = pantry.slice();
+
+  var deleteEntry = (entryId) => {
+    console.log(entryId);
+    for (var i = 0; i < pantryList.length; i++) {
+      if (entryId === pantryList[i].id) {
+        console.log(i);
+        pantryList.splice(i, 1);
+        setPantry(pantryList);
+      }
+    }
+  }
 
   return (
-    <div>
-      <h1>Your Pantry</h1>
-      {props.pantryList.map(item =>
-        <PantryItem item={item}/>
+    <div id='pantryList'>
+      <h2>Your Pantry</h2>
+      <div id='pantryListHeader'>
+        <h2>Item</h2>
+        <h2>Quantity</h2>
+      </div>
+      {pantryList.map(item =>
+        <PantryItem key={item.id} item={item} delete={deleteEntry}/>
       )}
     </div>
   );
