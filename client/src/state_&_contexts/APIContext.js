@@ -7,8 +7,7 @@ import { PantryContext } from './PantryContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
-
-  const { setPantry } = useContext(PantryContext);
+  const { pantry, setPantry } = useContext(PantryContext);
 
   /*********************************FUNCTION CALLS GO HERE************************************/
 
@@ -24,6 +23,15 @@ const APIProvider = ({ children }) => {
     axios.delete(`/pantry/${id}`)
   }
 
+  const addToPantry = (e) => {
+    e.preventDefault();
+    const [item, quantity] = [e.target[0].value, e.target[2].value];
+    const pantryAddParse = { ingredient: item, quantity };
+    const pantryCopy = pantry.slice();
+    pantryCopy.push(pantryAddParse);
+    setPantry(pantryCopy);
+  };
+
   /*******************************************************************************************/
 
   return (
@@ -31,11 +39,13 @@ const APIProvider = ({ children }) => {
       /* Include functions here */
       //Pantry
       getPantry,
-      deleteFromPantry
-    }}>
+      deleteFromPantry,
+      addToPantry,
+    }}
+    >
       {children}
     </APIContext.Provider>
-  )
+  );
 };
 
 export default APIProvider;
