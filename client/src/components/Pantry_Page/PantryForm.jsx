@@ -5,7 +5,7 @@ import { APIContext } from '../../state_&_contexts/APIContext';
 const PantryForm = () => {
   const { addToPantry } = useContext(APIContext);
   return (
-    <form onSubmit={(e) => { addToPantry(e); }}>
+    <form onSubmit={(e) => addToPantry(e)}>
       <div>
         <label htmlFor="item">
           Item to add to pantry:
