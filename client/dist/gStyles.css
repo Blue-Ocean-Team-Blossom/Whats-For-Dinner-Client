@@ -77,12 +77,10 @@ h1 {
   top: 0;
 }
 
-<<<<<<< HEAD
 #pantryList {
   font-size: clamp(0.5em, 1em, 1.5em);
 }
 
-=======
 a:link {
   color: lightblue;
 }
@@ -90,7 +88,7 @@ a:link {
 a:visited {
   color: lightgoldenrodyellow;
 }
->>>>>>> 2d2903840abdf4fe731c46f6690d540b7a20c048
+
 #pantryListHeader {
   width: 80%;
   margin-left: 5%;

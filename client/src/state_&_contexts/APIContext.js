@@ -94,13 +94,10 @@ const APIProvider = ({ children }) => {
       getPantry,
       deleteFromPantry,
       addToPantry,
-<<<<<<< HEAD
       updateItem,
-=======
       //Recipes
       getRecipesByPantry,
       getRecipeById,
->>>>>>> 2d2903840abdf4fe731c46f6690d540b7a20c048
     }}
     >
       {children}
