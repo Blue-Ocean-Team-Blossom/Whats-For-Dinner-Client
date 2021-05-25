@@ -19,19 +19,20 @@
   border: 2px solid white;
   margin: 0 auto;
   text-align: center;
+  justify-content: center;
 }
 
 #pantryListHeader {
   width: 100%;
   display: inline-grid;
-  grid-template-columns: 20% 20% auto;
+  grid-template-columns: 20% 20% 50%;
   text-decoration: underline;
 }
 
 #pantryItem {
   width: 100%;
   display: inline-grid;
-  grid-template-columns: 20% 20% auto;
+  grid-template-columns: 20% 20% 50%;
   margin: 0 auto;
 }
 
