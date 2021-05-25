@@ -1,6 +1,7 @@
 /* eslint-disable */
 const express = require('express');
 const axios = require('axios');
+require('dotenv').config();
 
 const app = express();
 
@@ -8,8 +9,14 @@ app.use(express.static(`${__dirname}/../client/dist`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const port = process.env.PORT;
+const uri = process.env.API_IP_ADDRESS;
+
+const sampleUserId = 1; // CMD + F --> "Fix to add userId later"
+// This needs to go away later later. This is the exact comment text, just search it.
+
 app.get('/RecipesByPantry', (req, res) => {
-  axios.get('http://3.135.209.178/recipes/pantry?id=1')
+  axios.get(`${uri}/recipes/pantry?id=1`)
     .then((success) => {
       res.send(success.data);
     })
@@ -19,7 +26,7 @@ app.get('/RecipesByPantry', (req, res) => {
 });
 
 app.get('/Recipe/:id', (req, res) => {
-  axios.get(`http://3.135.209.178/recipes/${req.params.id}`)
+  axios.get(`${uri}/recipes/${req.params.id}`)
     .then((success) => {
       res.send(success.data);
     })
@@ -28,11 +35,61 @@ app.get('/Recipe/:id', (req, res) => {
     });
 });
 
-const port = 5000;
+app.get(`${uri}/pantry`, (req, res) => {
+  pantry = sampleData.samplePantry;
+  res.status(200).send(pantry);
+});
+
+app.post('/pantry/autocomplete', (req, res) => {
+  const { value } = req.body;
+  axios.get(`${uri}/ingredients?query=${value}`)
+    .then((ingredients) => {
+      const { data } = ingredients;
+      const parse = data.map((ingredient) => {
+        const { name, id } = ingredient;
+        const singleParse = { name, id };
+        return singleParse;
+      });
+      res.status(200).send(parse);
+    })
+    .catch((err) => {
+      res.status(500).send();
+      console.log(`unable to get autocomplete ingredients, ${err}`);
+    });
+});
+
+app.post('/pantry', (req, res) => {
+  const { itemData, quantity } = req.body; // Fix to add userId later
+  const userId = sampleUserId; // get rid of this later
+  const { name, id } = itemData;
+  const parse = {
+    ingredient: name,
+    ingredientId: id,
+    quantity: Number(quantity),
+  };
+  axios({
+    method: 'post',
+    url: `${uri}/pantry`,
+    data: parse,
+  })
+    .then((response) => {
+      console.log('successful post to pantry');
+      res.status(201).send();
+      res.end();
+    })
+    .catch((err) => {
+      res.status(404).send();
+      console.log(`error posting to pantry, ${err}`);
+    });
+});
+
+// app.delete(`${uri}/pantry/*`, (req, res) => {
+
+// }
 
 app.get('/ingredients', (req, res) => {
   let query = req.query.query;
-  axios.get(`http://3.135.209.178/ingredients?query=${query}`)
+  axios.get(`${uri}/ingredients?query=${query}`)
     .then((success) => {
       console.log(success.data);
       res.send(success.data);
@@ -44,7 +101,7 @@ app.get('/ingredients', (req, res) => {
 
 app.get('/filteredRecipes', (req, res) => {
   let ingredients = req.query.ingredients;
-  axios.get(`http://3.135.209.178/recipes?ingredients=${ingredients}`)
+  axios.get(`${uri}/recipes?ingredients=${ingredients}`)
     .then((success) => {
       res.send(success.data);
     })
