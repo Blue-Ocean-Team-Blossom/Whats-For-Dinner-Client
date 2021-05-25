@@ -1,10 +1,10 @@
 .search-box{
  transform: translate(-5%, -10%);
- width: 20%;
+ width: 75%;
  background: #2f3640;
  height: 40px;
  border-radius: 40px;
- padding: 10px;
+ padding-top: 10px;
 }
 
 .search-box:hover > .search-txt {
@@ -28,3 +28,23 @@
 .ingredient:hover{
   color: red;
 }
+
+.filteredContainer {
+  display: grid;
+  flex-direction: column;
+  justify-content: flex-start;
+  grid-template-columns: 35% 15% 50%;
+}
+
+.filter-button {
+  background-color: white;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  padding-top: 10px;
+}
+
