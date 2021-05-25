@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { RecipeContext } from './RecipeContext';
@@ -7,44 +7,41 @@ import { PantryContext } from './PantryContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
-
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
   const { pantry, setPantry } = useContext(PantryContext);
   const { autocompOpts, setAutocompOpts } = useContext(PantryContext);
 
-  /*********************************FUNCTION CALLS GO HERE************************************/
+  /** *******************************FUNCTION CALLS GO HERE*********************************** */
 
-
-  /****************************************Pantry*********************************************/
+  /** **************************************Pantry******************************************** */
   const getPantry = async (userId) => {
-    var pantryList = await axios.get(`/pantry`)
+    const pantryList = await axios.get('/pantry');
     setPantry(pantryList.data);
-  }
+  };
 
   const deleteFromPantry = async (id, userId) => {
-    console.log(typeof(id));
-    axios.delete(`/pantry`, {data: {id: id}})
-    .then (() => {
-      getPantry(userId)
-    })
-    .catch (err => {
-      console.log(err)
-    })
-  }
+    axios.delete('/pantry', { data: { id } })
+      .then(() => {
+        getPantry(userId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-  const updateItem = async(id, userId, quantity) => {
-    var updateData = {
+  const updateItem = async (id, userId, quantity) => {
+    const updateData = {
       pantryId: id,
-      quantity: quantity
-    }
-    axios.put(`/pantry`, updateData)
-    .then (() => {
-      getPantry(userId)
-    })
-    .catch (err => {
-      console.log(err)
-    })
-  }
+      quantity,
+    };
+    axios.put('/pantry', updateData)
+      .then(() => {
+        getPantry(userId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const addToPantry = (e) => {
     e.preventDefault();
@@ -61,7 +58,7 @@ const APIProvider = ({ children }) => {
     const { value } = e.target;
     const options = { value };
     if (value.length > 2) {
-      var result = await axios.post('/pantry/autocomplete', options)
+      const result = await axios.post('/pantry/autocomplete', options)
         .then((success) => success.data)
         .catch((err) => {
           console.error(`Pantry autocomplete error: ${err}`);
@@ -73,48 +70,46 @@ const APIProvider = ({ children }) => {
     }
   };
 
-  /*******************************************************************************************/
+  /** **************************************************************************************** */
 
-  /***********************************RecipesByPantry*********************************************/
+  /** *********************************RecipesByPantry******************************************* */
 
   const getRecipesByPantry = async () => {
     axios.get('/RecipesByPantry')
       .then((success) => {
         setRecipe(success.data);
-        return;
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
-  /*******************************************************************************************/
+  /** **************************************************************************************** */
 
-  /***********************************RecipeById*********************************************/
+  /** *********************************RecipeById******************************************** */
 
   const getRecipeById = async (id) => {
     axios.get(`/Recipe/${id}`)
       .then((success) => {
         setRecipeinfo(success.data);
-        return;
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
-  /*******************************************************************************************/
+  /** **************************************************************************************** */
 
   return (
     <APIContext.Provider value={{
       /* Include functions here */
-      //Pantry
+      // Pantry
       getPantry,
       deleteFromPantry,
       addToPantry,
-      updateItem,
       autocomplete,
-      //Recipes
+      updateItem,
+      // Recipes
       getRecipesByPantry,
       getRecipeById,
     }}

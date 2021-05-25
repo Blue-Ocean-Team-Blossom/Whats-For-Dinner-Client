@@ -6,8 +6,8 @@ import sampleData from './sampleData/samplePantry.js';
 export const PantryContext = createContext({});
 
 const PantryProvider = ({ children }) => {
-  const [pantry, setPantry] = useState(sampleData.samplePantry);
   const [autocompOpts, setAutocompOpts] = useState([]);
+  const [pantry, setPantry] = useState(sampleData.samplePantry);
 
   return (
     <PantryContext.Provider

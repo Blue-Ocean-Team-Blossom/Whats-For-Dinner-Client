@@ -1,6 +1,7 @@
 /* eslint-disable */
 const express = require('express');
 const axios = require('axios');
+require('dotenv').config();
 
 const app = express();
 
@@ -8,14 +9,11 @@ app.use(express.static(`${__dirname}/../client/dist`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const port = 5000;
-
-const { autocompleteIngredient } = require('./spoonacularSample');
+const port = process.env.PORT;
+const uri = process.env.API_IP_ADDRESS;
 
 const sampleUserId = 1; // CMD + F --> "Fix to add userId later"
 // This needs to go away later later. This is the exact comment text, just search it.
-
-const uri = 'http://3.135.209.178';
 
 app.get('/RecipesByPantry', (req, res) => {
   axios.get(`${uri}/recipes/pantry?id=1`)
@@ -110,10 +108,9 @@ app.post('/pantry', (req, res) => {
     });
 });
 
-
 app.get('/ingredients', (req, res) => {
   let query = req.query.query;
-  axios.get(`http://3.135.209.178/ingredients?query=${query}`)
+  axios.get(`${uri}/ingredients?query=${query}`)
     .then((success) => {
       console.log(success.data);
       res.send(success.data);
@@ -125,7 +122,7 @@ app.get('/ingredients', (req, res) => {
 
 app.get('/filteredRecipes', (req, res) => {
   let ingredients = req.query.ingredients;
-  axios.get(`http://3.135.209.178/recipes?ingredients=${ingredients}`)
+  axios.get(`${uri}/recipes?ingredients=${ingredients}`)
     .then((success) => {
       res.send(success.data);
     })
