@@ -28,12 +28,12 @@ const APIProvider = ({ children }) => {
 
   const addToPantry = (e) => {
     e.preventDefault();
-    const [item, quantity] = [e.target[0].value, e.target[2].value];
-    console.log(`${item} and ${quantity}`);
-    const pantryAddParse = { ingredient: item, quantity };
-    const pantryCopy = pantry.slice();
-    pantryCopy.push(pantryAddParse);
-    setPantry(pantryCopy);
+    const quantity = e.target[2].value;
+    const itemData = autocompOpts[0];
+    const pantryAddParse = { itemData, quantity };
+    axios.post('/pantry', pantryAddParse)
+      .then(() => getPantry())
+      .catch((err) => false);
   };
 
   const autocomplete = async (e) => {
