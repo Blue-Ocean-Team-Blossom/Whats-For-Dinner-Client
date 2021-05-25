@@ -10,12 +10,8 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = 5000;
 
-// const sampleData = require('./samplePantry');
-const { autocompleteIngredient } = require('./spoonacularSample');
-
 const sampleUserId = 1; // CMD + F --> "Fix to add userId later"
 // This needs to go away later later. This is the exact comment text, just search it.
-
 const uri = 'http://3.135.209.178';
 
 app.get('/RecipesByPantry', (req, res) => {
