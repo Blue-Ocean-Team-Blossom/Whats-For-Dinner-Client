@@ -29,7 +29,7 @@ const PantryList = () => {
   return (
     <div id='pantryList'>
       <h1>Your Current Pantry</h1>
-      <div>
+      <div id='pantryFeed'>
         <div id='pantryListHeader'>
           <h2>Item</h2>
           <h2>Quantity</h2>
