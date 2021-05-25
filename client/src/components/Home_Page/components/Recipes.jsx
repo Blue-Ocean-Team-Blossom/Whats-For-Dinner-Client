@@ -4,52 +4,14 @@ import { RecipeContext } from '../../../state_&_contexts/RecipeContext';
 import { APIContext } from '../../../state_&_contexts/APIContext';
 import parse from 'html-react-parser';
 
-// class Recipe extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       showdetails: false,
-//     }
-//     this.onClick = this.onClick.bind(this);
-//   }
-
-//   onClick(e) {
-//     e.preventDefault();
-//     console.log(e.target.title);
-//     this.props.setRecipeID(Number(e.target.title));
-//     this.setState({
-//       showdetails: true,
-//     })
-//   }
-
-//   render() {
-//     return(
-//       <div>
-//         {this.props.recipeList.map((recipe) =>
-//           <div key={Number(recipe.id)} onClick={this.onClick} title={Number(recipe.id)}>
-//             <img src={recipe.image} title={Number(recipe.id)}/>
-//             {recipe.title}
-//           </div>
-//         )}
-//       </div>
-//     )
-//   }
-// }
-
-// export default Recipe;
-
-
-
-
 const Recipe = (props) => {
   const { recipeinfo } = useContext(RecipeContext);
-  const { getPantry, getRecipesByPantry, getRecipeById } = useContext(APIContext);
+  const { getRecipeById } = useContext(APIContext);
 
   const [showdetails, setShowdetails] = useState(false);
 
   const onClick = (e) => {
     e.preventDefault();
-    console.log(e.target.id);
     getRecipeById(Number(e.target.id));
     setShowdetails(true);
   }
@@ -61,13 +23,19 @@ const Recipe = (props) => {
 
   return (
     <div id='infinite-recipesList'>
-      {props.recipeList.map((recipe) =>
-        <div className='recipesList' key={Number(recipe.id)}>
-          <h2 className='recipesListTitle' onClick={onClick} id={Number(recipe.id)}>{recipe.title}</h2>
-          <img className='recipesListIMG' src={recipe.image} onClick={onClick} id={Number(recipe.id)}></img>
-          <hr width='22.5%'></hr>
-        </div>
-      )}
+      <h1 className='recipes'>Recipe List</h1>
+      <div className='recipesContainer'>
+        {props.recipeList.map((recipe) =>
+          <div key={Number(recipe.id)}>
+            <div className='recipesList'>
+              <h2 className='recipesListTitle' onClick={onClick} id={Number(recipe.id)}>{recipe.title}</h2>
+              <img className='recipesListIMG' src={recipe.image} onClick={onClick} id={Number(recipe.id)}></img>
+              <hr width='85%'></hr>
+            </div>
+            <br></br>
+          </div>
+        )}
+      </div>
 
       {showdetails ?
         <div className='modal'>
