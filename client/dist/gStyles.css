@@ -77,6 +77,13 @@ h1 {
   top: 0;
 }
 
+a:link {
+  color: lightblue;
+}
+
+a:visited {
+  color: lightgoldenrodyellow;
+}
 #pantryListHeader {
   width: 80%;
   margin-left: 5%;
