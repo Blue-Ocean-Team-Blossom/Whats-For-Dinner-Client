@@ -28,7 +28,7 @@ const PantryList = () => {
 
   return (
     <div id='pantryList'>
-      <h2>Your Pantry</h2>
+      <h1>Your Current Pantry</h1>
       <div id='pantryListHeader'>
         <h2>Item</h2>
         <h2>Quantity</h2>

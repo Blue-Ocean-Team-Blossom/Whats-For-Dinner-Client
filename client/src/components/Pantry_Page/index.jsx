@@ -16,6 +16,7 @@ const Pantry = () => {
 
   return (
     <div id='pantrySection'>
+      <h1 id='pantryTitle'>Pantry List</h1>
       <PantryForm />
       {/* <PantryList pantryList={pantry} /> */}
       <PantryList />

@@ -77,9 +77,6 @@ h1 {
   top: 0;
 }
 
-#pantryList {
-  font-size: clamp(0.5em, 1em, 1.5em);
-}
 
 a:link {
   color: lightblue;
@@ -89,55 +86,3 @@ a:visited {
   color: lightgoldenrodyellow;
 }
 
-#pantryListHeader {
-  width: 80%;
-  margin-left: 5%;
-  display: inline-grid;
-  grid-template-columns: 30% 30% auto;
-  text-decoration: underline;
-  align-self: center;
-}
-
-#pantryItem {
-  margin-left: 5%;
-  width: 80%;
-  display: inline-grid;
-  grid-template-columns: 30% 30% 30%;
-  align-items: center;
-}
-
-#itemButtons {
-  width: 30%;
-}
-
-#updateQuantity {
-  width: 100%;
-  height: 1.5em;
-}
-
-#updateField {
-  display: inline-grid;
-  grid-template-columns: 20% 15% 15%;
-}
-
-/* #updateButtons {
-  display: inline-grid;
-} */
-
-#itemButtons button:hover, #updateField button:hover {
-  cursor: pointer;
-}
-
-#pantryForm {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  width: 50vw;
-}
-
-#pantryFormItem { grid-area: 1 / 1 / 2 / 2; }
-#pantryFormUnit { grid-area: 1 / 2 / 2 / 3; }
-#pantryFormQuantity { grid-area: 1 / 3 / 2 / 4; }
-#pantryFormSubmit { grid-area: 1 / 4 / 2 / 5; }
