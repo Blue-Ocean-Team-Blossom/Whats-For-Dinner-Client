@@ -5,7 +5,6 @@ import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import IngredientsList from './IngredientsList.jsx';
 import FilteredList from './FilteredList.jsx';
-// import RecipeList from './RecipeList.jsx';
 import Recipe from './Recipes.jsx';
 
 class FilteredRecipe extends React.Component {
@@ -39,9 +38,6 @@ class FilteredRecipe extends React.Component {
   }
 
   handleSearchChange(e) {
-    // this.setState ({
-    //   search: e.nativeEvent.data
-    // });
     this.fetchIngredients(e.nativeEvent.data);
   }
 
@@ -82,7 +78,6 @@ class FilteredRecipe extends React.Component {
         <div>FILTER</div>
         <FilteredList list={this.state.filter} delete={this.deleteFilter}/>
         <button type="button" onClick={this.handleSearchButton}>Search</button>
-        {/* <RecipeList list={this.state.recipes}/> */}
         <Recipe recipeList={this.state.recipes}/>
       </div>
     )
