@@ -112,7 +112,6 @@ app.get('/ingredients', (req, res) => {
   let query = req.query.query;
   axios.get(`${uri}/ingredients?query=${query}`)
     .then((success) => {
-      console.log(success.data);
       res.send(success.data);
     })
     .catch((err) => {

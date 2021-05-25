@@ -15,29 +15,36 @@
 }
 
 #pantryFeed {
-  width: 80%;
+  height: 40vh;
+  width: 60%;
+  padding: 3%;
   border: 2px solid white;
   margin: 0 auto;
   text-align: center;
-  justify-content: center;
+  background-color: #3E4C59;
+}
+
+#pantryFeedItems {
+  height: 35vh;
+  overflow-y: auto;
 }
 
 #pantryListHeader {
   width: 100%;
   display: inline-grid;
-  grid-template-columns: 20% 20% 50%;
+  grid-template-columns: 33% 33% 33%;
   text-decoration: underline;
 }
 
 #pantryItem {
   width: 100%;
   display: inline-grid;
-  grid-template-columns: 20% 20% 50%;
+  grid-template-columns: 33% 33% 33%;
   margin: 0 auto;
 }
 
 #itemButtons {
-  width: 30%;
+  width: 90%;
 }
 
 #updateQuantity {
@@ -63,8 +70,8 @@
   border-radius: 4px;
   text-transform: uppercase;
   outline: 0;
-  overflow:hidden;
-  background: none;
+  overflow: hidden;
+  background-color: #1F2933;
   z-index: 1;
   transition:         0.08s ease-in;
   -o-transition:      0.08s ease-in;

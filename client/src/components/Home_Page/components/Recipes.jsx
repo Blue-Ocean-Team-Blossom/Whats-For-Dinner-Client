@@ -3,40 +3,75 @@ import React, { useEffect, useContext, useState } from 'react';
 import { RecipeContext } from '../../../state_&_contexts/RecipeContext';
 import { APIContext } from '../../../state_&_contexts/APIContext';
 import parse from 'html-react-parser';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const Recipe = (props) => {
-  const { recipeinfo } = useContext(RecipeContext);
+  const { recipeinfo, showpantryrecipes } = useContext(RecipeContext);
   const { getRecipeById } = useContext(APIContext);
 
   const [showdetails, setShowdetails] = useState(false);
+  const [items, setItems] = useState([]);
+  const [hasmore, setHasmore] = useState(true);
+  const [count, setCount] = useState(4);
+
+  useEffect(() => {
+    setItems(props.recipeList.slice(0, count));
+  }, [props.recipeList]);
 
   const onClick = (e) => {
     e.preventDefault();
     getRecipeById(Number(e.target.id));
     setShowdetails(true);
-  }
+  };
 
   const close = (e) => {
     e.preventDefault();
     setShowdetails(false);
-  }
+  };
+
+  const fetchMoreData = () => {
+    if (items.length >= 20) {
+      setHasmore(false);
+      return;
+    }
+
+    setTimeout(() => {
+      let total = count + 4;
+      setCount(total);
+      setItems(props.recipeList.slice(0, total));
+    }, 500);
+  };
 
   return (
     <div id='infinite-recipesList'>
-      <h1 className='recipes'>Recipe List</h1>
-      <div className='recipesContainer'>
-        {props.recipeList.map((recipe) =>
-          <div key={Number(recipe.id)}>
-            <div className='recipesList'>
-              <h2 className='recipesListTitle' onClick={onClick} id={Number(recipe.id)}>{recipe.title}</h2>
-              <img className='recipesListIMG' src={recipe.image} onClick={onClick} id={Number(recipe.id)}></img>
-              <hr width='85%'></hr>
+      {showpantryrecipes ?
+        <h1 className='recipes'>Suggested Recipe List</h1>
+      : <h1 className='recipes'>Filtered Recipe List</h1>}
+      <br></br>
+      <div id='recipesContainer'>
+        <InfiniteScroll
+          dataLength={items.length}
+          next={fetchMoreData}
+          hasMore={hasmore}
+          scrollableTarget='recipesContainer'
+          endMessage={
+            <p style={{ textAlign: 'center' }}>
+              <b>All Recipes Loaded</b>
+            </p>
+          }
+        >
+          {items.map((recipe) =>
+            <div key={Number(recipe.id)}>
+              <div className='recipesList'>
+                <h2 className='recipesListTitle' onClick={onClick} id={Number(recipe.id)}>{recipe.title}</h2>
+                <img className='recipesListIMG' src={recipe.image} onClick={onClick} id={Number(recipe.id)}></img>
+                <hr width='85%'></hr>
+              </div>
+              <br></br>
             </div>
-            <br></br>
-          </div>
-        )}
+          )}
+        </InfiniteScroll>
       </div>
-
       {showdetails ?
         <div className='modal'>
           <div className='recipe'>
@@ -60,7 +95,7 @@ const Recipe = (props) => {
             <p className='recipeExtraInfo'>
               Servings: {recipeinfo.servings}<br></br>
               Ready in {recipeinfo.readyInMinutes} Minutes<br></br>
-              Cooking Instructions: <a href={recipeinfo.spoonacularSourceUrl}>{recipeinfo.title}</a><br></br>
+              Cooking Instructions: <a href={recipeinfo.spoonacularSourceUrl} target='_blank'>{recipeinfo.title}</a><br></br>
             </p>
             <a onClick={close} className="close"></a>
           </div>
