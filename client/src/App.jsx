@@ -43,8 +43,13 @@ const App = () => {
 
   return (
     <div>
-      <div><Nav changeView={changeView}/></div>
-      <div className='mainContainer'>{renderView()}</div>
+      <h1>What's for Dinner?</h1>
+      <div className='mainContainer'>
+      <div className='navContainer'>
+        <Nav changeView={changeView}/>
+      </div>
+        {renderView()}
+      </div>
     </div>
   );
 };
