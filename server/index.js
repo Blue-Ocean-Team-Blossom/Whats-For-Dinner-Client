@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = 5000;
 
-const sampleData = require('./samplePantry');
+// const sampleData = require('./samplePantry');
 const { autocompleteIngredient } = require('./spoonacularSample');
 
 const sampleUserId = 1; // CMD + F --> "Fix to add userId later"
@@ -86,9 +86,9 @@ app.post('/pantry', (req, res) => {
     });
 });
 
-app.delete(`${uri}/pantry/*`, (req, res) => {
+// app.delete(`${uri}/pantry/*`, (req, res) => {
 
-}
+// }
 
 app.get('/ingredients', (req, res) => {
   let query = req.query.query;
