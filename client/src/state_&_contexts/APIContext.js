@@ -15,13 +15,12 @@ const APIProvider = ({ children }) => {
 
   /** **************************************Pantry******************************************** */
   const getPantry = async (userId) => {
-    const pantryList = await axios.get('http://3.135.209.178/pantry?id=1');
+    const pantryList = await axios.get('/pantry');
     setPantry(pantryList.data);
   };
 
   const deleteFromPantry = async (id, userId) => {
-    console.log(typeof (id));
-    axios.delete('http://3.135.209.178/pantry', { data: { id } })
+    axios.delete('/pantry', { data: { id } })
       .then(() => {
         getPantry(userId);
       })
@@ -35,8 +34,7 @@ const APIProvider = ({ children }) => {
       pantryId: id,
       quantity,
     };
-    console.log(typeof (quantity));
-    axios.put('http://3.135.209.178/pantry', updateData)
+    axios.put('/pantry', updateData)
       .then(() => {
         getPantry(userId);
       })
