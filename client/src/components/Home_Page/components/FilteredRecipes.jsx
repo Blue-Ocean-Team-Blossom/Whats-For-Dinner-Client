@@ -38,7 +38,9 @@ class FilteredRecipe extends React.Component {
   }
 
   handleSearchChange(e) {
-    this.fetchIngredients(e.nativeEvent.data);
+    if(e.target.value.length > 2) {
+      this.fetchIngredients(e.target.value);
+    }
   }
 
   addIngredient (e) {
@@ -75,7 +77,7 @@ class FilteredRecipe extends React.Component {
       <div className ='search-bar'>
         <SearchBar change={this.handleSearchChange}/>
         <IngredientsList list={this.state.ingredients} add={this.addIngredient}/>
-        <div>FILTER</div>
+        <div className="filter">FILTER</div>
         <FilteredList list={this.state.filter} delete={this.deleteFilter}/>
         <button type="button" onClick={this.handleSearchButton}>Search</button>
         <Recipe recipeList={this.state.recipes}/>
@@ -85,4 +87,6 @@ class FilteredRecipe extends React.Component {
 }
 
 
+
 export default FilteredRecipe;
+
