@@ -557,12 +557,15 @@ app.post('/pantry/autocomplete', (req, res) => {
       ingredients.push(ingredient);
     }
   });
+  axios({
+    method: 'get',
+    url:`h`
+  })
   res.status(200).send(ingredients);
 });
 
-app.post('pantry', (req, res) => {
+app.post('/pantry', (req, res) => {
   const ingredient = req.body;
-
 });
 
 app.delete('/pantry/*', (req, res) => {

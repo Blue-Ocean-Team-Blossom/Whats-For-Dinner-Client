@@ -29,6 +29,7 @@ const APIProvider = ({ children }) => {
   const addToPantry = (e) => {
     e.preventDefault();
     const [item, quantity] = [e.target[0].value, e.target[2].value];
+    console.log(`${item} and ${quantity}`);
     const pantryAddParse = { ingredient: item, quantity };
     const pantryCopy = pantry.slice();
     pantryCopy.push(pantryAddParse);
