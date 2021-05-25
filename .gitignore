@@ -103,3 +103,6 @@ bundle.js.map
 
 # TernJS port file
 .tern-port
+
+# PEM files
+*.pem

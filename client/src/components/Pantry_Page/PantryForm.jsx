@@ -1,22 +1,31 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { APIContext } from '../../state_&_contexts/APIContext';
+import { PantryContext } from '../../state_&_contexts/PantryContext';
 
 const PantryForm = () => {
-  const { addToPantry } = useContext(APIContext);
+  const { addToPantry, autocomplete } = useContext(APIContext);
+  const { autocompOpts } = useContext(PantryContext);
   return (
     <form id="pantryForm" onSubmit={(e) => addToPantry(e)}>
       <label htmlFor="pantryFormItem">
-        Item to add to pantry:
+        Item:
         <br />
-        <input type="text" id="pantryFormItem" name="pantryFormItem" placeholder="item to add" />
+        <input type="text" list="pantryInputSelect" id="pantryFormItem" name="pantryFormItem" placeholder="item to add" onChange={autocomplete} />
+        <datalist id="pantryInputSelect">
+          {autocompOpts.map((option) => (
+            <option key={option.id} data={option} value={option.name}>
+              {option.name}
+            </option>
+          ))}
+        </datalist>
       </label>
       <label htmlFor="pantryFormUnit">
-        Unit measurement for item:
+        Unit measurement:
         <br />
         <input type="text" id="pantryFormUnit" name="pantryFormUnit" placeholder="unit" disabled />
       </label>
       <label htmlFor="pantryFormQuantity">
-        Quantity for item:
+        Quantity:
         <br />
         <input type="number" id="pantryFormQuantity" name="pantryFormQuantity" placeholder="greater than zero" step="0.01" min="0.01" />
       </label>
