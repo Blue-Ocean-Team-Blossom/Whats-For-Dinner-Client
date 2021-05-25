@@ -31,9 +31,11 @@ const PantryList = () => {
           <h2>Item</h2>
           <h2>Quantity</h2>
         </div>
-        {pantryList.map(item =>
-          <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
-        )}
+        <div id='pantryFeedItems'>
+          {pantryList.map(item =>
+            <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
+          )}
+        </div>
       </div>
     </div>
   );

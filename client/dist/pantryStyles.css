@@ -15,12 +15,18 @@
 }
 
 #pantryFeed {
+  height: 40vh;
   width: 60%;
   padding: 3%;
   border: 2px solid white;
   margin: 0 auto;
   text-align: center;
   background-color: #3E4C59;
+}
+
+#pantryFeedItems {
+  height: 35vh;
+  overflow-y: auto;
 }
 
 #pantryListHeader {
