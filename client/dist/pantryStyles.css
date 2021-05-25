@@ -5,11 +5,13 @@
 
 #pantryList {
   /* font-size: clamp(0.2em, 1em, 1.5em); */
-  align-self: center;
   width: 80%;
   margin: 0 auto;
   margin-top: 5%;
-  justify-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #pantryListHeader {

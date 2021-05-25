@@ -29,13 +29,15 @@ const PantryList = () => {
   return (
     <div id='pantryList'>
       <h1>Your Current Pantry</h1>
-      <div id='pantryListHeader'>
-        <h2>Item</h2>
-        <h2>Quantity</h2>
+      <div>
+        <div id='pantryListHeader'>
+          <h2>Item</h2>
+          <h2>Quantity</h2>
+        </div>
+        {pantryList.map(item =>
+          <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
+        )}
       </div>
-      {pantryList.map(item =>
-        <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
-      )}
     </div>
   );
 }
