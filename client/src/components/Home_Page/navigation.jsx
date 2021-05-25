@@ -11,7 +11,7 @@ const Nav = (props) => {
 
   return (
     <div>
-      <button className='btn fill' onClick={() => props.changeView('recipeList')}>Home</button>
+      <button className='btn fill' onClick={() => {props.changeView('recipeList'), changeRecipeView(true)}}>Home</button>
       <button className='btn fill' onClick={() => props.changeView('pantryList')}>Pantry</button>
       {props.homeView === 'recipeList' ?
         showpantryrecipes ?

@@ -12,12 +12,9 @@ const PantryList = () => {
     getPantry(1);
   }, []);
 
-  // console.log(props.pantryList);
-
   var pantryList = pantry.slice();
 
   var deleteEntry = (entryId) => {
-    console.log(entryId);
     for (var i = 0; i < pantryList.length; i++) {
       if (entryId === pantryList[i].id) {
         pantryList.splice(i, 1);
@@ -28,14 +25,16 @@ const PantryList = () => {
 
   return (
     <div id='pantryList'>
-      <h2>Your Pantry</h2>
-      <div id='pantryListHeader'>
-        <h2>Item</h2>
-        <h2>Quantity</h2>
+      <h1>Your Current Pantry</h1>
+      <div id='pantryFeed'>
+        <div id='pantryListHeader'>
+          <h2>Item</h2>
+          <h2>Quantity</h2>
+        </div>
+        {pantryList.map(item =>
+          <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
+        )}
       </div>
-      {pantryList.map(item =>
-        <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
-      )}
     </div>
   );
 }
