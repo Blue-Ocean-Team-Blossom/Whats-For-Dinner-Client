@@ -9,7 +9,7 @@ const PantryList = () => {
   const { getPantry, deleteFromPantry } = useContext(APIContext);
 
   useEffect(() => {
-    getPantry();
+    getPantry(1);
   }, []);
 
   // console.log(props.pantryList);
@@ -20,7 +20,6 @@ const PantryList = () => {
     console.log(entryId);
     for (var i = 0; i < pantryList.length; i++) {
       if (entryId === pantryList[i].id) {
-        console.log(i);
         pantryList.splice(i, 1);
         setPantry(pantryList);
       }
@@ -35,7 +34,7 @@ const PantryList = () => {
         <h2>Quantity</h2>
       </div>
       {pantryList.map(item =>
-        <PantryItem key={item.id} item={item} delete={deleteEntry}/>
+        <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
       )}
     </div>
   );
