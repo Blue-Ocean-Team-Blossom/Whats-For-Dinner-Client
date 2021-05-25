@@ -26,7 +26,6 @@ const App = () => {
     if (view === 'recipeList') {
       return (
         <div className='mainSubContainer'>
-          <h1>Recipe List</h1>
           <Home />
         </div>
       )
