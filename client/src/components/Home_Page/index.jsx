@@ -7,7 +7,7 @@ import { RecipeContext } from '../../state_&_contexts/RecipeContext';
 import { APIContext } from '../../state_&_contexts/APIContext';
 
 const Home = () => {
-  const { recipe } = useContext(RecipeContext);
+  const { recipe, showpantryrecipes } = useContext(RecipeContext);
   const { getRecipesByPantry } = useContext(APIContext);
 
   useEffect(() => {
@@ -16,8 +16,9 @@ const Home = () => {
 
   return (
     <div>
-      <FilteredRecipe />
-      <Recipe recipeList={recipe}/>
+      {showpantryrecipes ?
+        <Recipe recipeList={recipe}/>
+      : <FilteredRecipe />}
     </div>
   )
 };

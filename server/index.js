@@ -1,3 +1,4 @@
+/* eslint-disable */
 const express = require('express');
 const axios = require('axios');
 
@@ -87,6 +88,29 @@ app.post('/pantry', (req, res) => {
 
 app.delete(`${uri}/pantry/*`, (req, res) => {
 
+}
+
+app.get('/ingredients', (req, res) => {
+  let query = req.query.query;
+  axios.get(`http://3.135.209.178/ingredients?query=${query}`)
+    .then((success) => {
+      console.log(success.data);
+      res.send(success.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+app.get('/filteredRecipes', (req, res) => {
+  let ingredients = req.query.ingredients;
+  axios.get(`http://3.135.209.178/recipes?ingredients=${ingredients}`)
+    .then((success) => {
+      res.send(success.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
 app.listen(port, () => {

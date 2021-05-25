@@ -77,6 +77,10 @@ h1 {
   top: 0;
 }
 
+#pantryList {
+  font-size: clamp(0.5em, 1em, 1.5em);
+}
+
 a:link {
   color: lightblue;
 }
@@ -84,11 +88,12 @@ a:link {
 a:visited {
   color: lightgoldenrodyellow;
 }
+
 #pantryListHeader {
   width: 80%;
   margin-left: 5%;
   display: inline-grid;
-  grid-template-columns: 40% 30% auto;
+  grid-template-columns: 30% 30% auto;
   text-decoration: underline;
   align-self: center;
 }
@@ -97,8 +102,30 @@ a:visited {
   margin-left: 5%;
   width: 80%;
   display: inline-grid;
-  grid-template-columns: 40% 30% 15%;
+  grid-template-columns: 30% 30% 30%;
   align-items: center;
+}
+
+#itemButtons {
+  width: 30%;
+}
+
+#updateQuantity {
+  width: 100%;
+  height: 1.5em;
+}
+
+#updateField {
+  display: inline-grid;
+  grid-template-columns: 20% 15% 15%;
+}
+
+/* #updateButtons {
+  display: inline-grid;
+} */
+
+#itemButtons button:hover, #updateField button:hover {
+  cursor: pointer;
 }
 
 #pantryForm {
