@@ -7,6 +7,8 @@ import { PantryContext } from './PantryContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
+
+  const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
   const { pantry, setPantry } = useContext(PantryContext);
 
   /*********************************FUNCTION CALLS GO HERE************************************/
@@ -55,6 +57,36 @@ const APIProvider = ({ children }) => {
 
   /*******************************************************************************************/
 
+  /***********************************RecipesByPantry*********************************************/
+
+  const getRecipesByPantry = async () => {
+    axios.get('/RecipesByPantry')
+      .then((success) => {
+        setRecipe(success.data);
+        return;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  /*******************************************************************************************/
+
+  /***********************************RecipeById*********************************************/
+
+  const getRecipeById = async (id) => {
+    axios.get(`/Recipe/${id}`)
+      .then((success) => {
+        setRecipeinfo(success.data);
+        return;
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+
+  /*******************************************************************************************/
+
   return (
     <APIContext.Provider value={{
       /* Include functions here */
@@ -62,7 +94,13 @@ const APIProvider = ({ children }) => {
       getPantry,
       deleteFromPantry,
       addToPantry,
+<<<<<<< HEAD
       updateItem,
+=======
+      //Recipes
+      getRecipesByPantry,
+      getRecipeById,
+>>>>>>> 2d2903840abdf4fe731c46f6690d540b7a20c048
     }}
     >
       {children}
