@@ -2,7 +2,7 @@
 
 
 ## Checklist
-### PR Type (Select all that apply and decribe above):
+### PR Type (Select all that apply and describe above):
 - [ ] Bug fix
 - [ ] Refactor
 - [ ] New Feature
@@ -23,3 +23,14 @@
 - [ ] Did you lint?
 
 ## Screenshots?
+
+
+## REVIEWER ONLY
+### If Issue(s) found:
+- [ ] Missing ticket / unplanned work
+- [ ] Test(s) broken
+- [ ] Error(s) in console(s) (browser included)
+- [ ] Error(s) in desktop view(s)
+- [ ] Error(s) in mobile view(s)
+- [ ] Error(s) in functionality(s)
+Make change-request and provide more detail on what is wrong.

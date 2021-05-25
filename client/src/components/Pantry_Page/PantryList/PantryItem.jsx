@@ -17,7 +17,9 @@ const PantryItem = (props) => {
   }
 
   var closeUpdate = (id, userId, quantity) => {
-    updateItem(id, userId, parseInt(quantity))
+    if (id && userId && quantity) {
+      updateItem(id, userId, parseInt(quantity))
+    }
     setShowUpdate(false);
   }
 
@@ -25,14 +27,19 @@ const PantryItem = (props) => {
     <div id='pantryItem'>
       <h3>{item.ingredient}</h3>
       {showUpdate
-        ? <div>
-            <input type='text' id='updateQuantity' placeholder='Input a new quantity'/>
-            <button onClick={() => {closeUpdate(item.id, 1, $('#updateQuantity').val())}}>Submit</button>
+        ? <div id='updateField'>
+            <input type='text' id='updateQuantity' placeholder='Quantity'/>
+            {/* <div id='updateButtons'> */}
+              <button onClick={() => {closeUpdate(item.id, 1, $('#updateQuantity').val())}}>Submit</button>
+              <button onClick={() => closeUpdate()}>Cancel</button>
+            {/* </div> */}
           </div>
         : <h3>{item.quantity}</h3>
       }
-      <button onClick={() => {openUpdate()}}>Update Quantity</button>
-      <button onClick={() => {deleteFunc(item.id, 1)}}>Delete Item</button>
+      <div id='itemButtons'>
+        <button onClick={() => {openUpdate()}}>Update Quantity</button>
+        <button onClick={() => {deleteFunc(item.id, 1)}}>Delete Item</button>
+      </div>
     </div>
   );
 }
