@@ -86,26 +86,31 @@ app.post('/pantry/autocomplete', (req, res) => {
 app.post('/pantry', (req, res) => {
   const { itemData, quantity } = req.body; // Fix to add userId later
   const userId = sampleUserId; // get rid of this later
-  const { name, id } = itemData;
-  const parse = {
-    ingredient: name,
-    ingredientId: id,
-    quantity: Number(quantity),
-  };
-  axios({
-    method: 'post',
-    url: `${uri}/pantry`,
-    data: parse,
-  })
-    .then((response) => {
-      console.log('successful post to pantry');
-      res.status(201).send();
-      res.end();
+  if (userId.name === undefined) {
+    res.status(404).send();
+    res.end();
+  } else {
+    const { name, id } = itemData;
+    const parse = {
+      ingredient: name,
+      ingredientId: id,
+      quantity: Number(quantity),
+    };
+    axios({
+      method: 'post',
+      url: `${uri}/pantry`,
+      data: parse,
     })
-    .catch((err) => {
-      res.status(404).send();
-      console.log(`error posting to pantry, ${err}`);
-    });
+      .then((response) => {
+        console.log('successful post to pantry');
+        res.status(201).send();
+        res.end();
+      })
+      .catch((err) => {
+        res.status(404).send();
+        console.log(`error posting to pantry, ${err}`);
+      });
+  }
 });
 
 app.get('/ingredients', (req, res) => {
