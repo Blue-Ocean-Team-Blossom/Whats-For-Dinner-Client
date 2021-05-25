@@ -86,7 +86,7 @@ app.post('/pantry/autocomplete', (req, res) => {
 app.post('/pantry', (req, res) => {
   const { itemData, quantity } = req.body; // Fix to add userId later
   const userId = sampleUserId; // get rid of this later
-  if (userId.name === undefined) {
+  if (itemData === undefined) {
     res.status(404).send();
     res.end();
   } else {
