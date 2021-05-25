@@ -549,9 +549,14 @@ app.get('/pantry', (req, res) => {
   res.status(200).send(pantry);
 });
 
-app.get('pantry/form', (req, res) => {
-  const ingredients = autocompleteIngredient;
-  console.log(ingredients);
+app.post('/pantry/autocomplete', (req, res) => {
+  const { value } = req.body;
+  const ingredients = [];
+  autocompleteIngredient.forEach((ingredient) => {
+    if (ingredient.name.includes(value)) {
+      ingredients.push(ingredient);
+    }
+  });
   res.status(200).send(ingredients);
 });
 

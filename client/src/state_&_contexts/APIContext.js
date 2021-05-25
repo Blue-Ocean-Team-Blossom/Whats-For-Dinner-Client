@@ -10,6 +10,7 @@ const APIProvider = ({ children }) => {
 
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
   const { pantry, setPantry } = useContext(PantryContext);
+  const { autocompOpts, setAutocompOpts } = useContext(PantryContext);
 
   /*********************************FUNCTION CALLS GO HERE************************************/
 
@@ -34,11 +35,20 @@ const APIProvider = ({ children }) => {
     setPantry(pantryCopy);
   };
 
-  const autocomplete = (e) => {
+  const autocomplete = async (e) => {
     e.preventDefault();
     const { value } = e.target;
+    const options = { value };
     if (value.length > 2) {
-      axios.get()
+      var result = await axios.post('/pantry/autocomplete', options)
+        .then((success) => success.data)
+        .catch((err) => {
+          console.error(`Pantry autocomplete error: ${err}`);
+          return false;
+        });
+      if (result) {
+        setAutocompOpts(result);
+      }
     }
   };
 

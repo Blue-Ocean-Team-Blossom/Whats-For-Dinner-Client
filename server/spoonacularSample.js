@@ -6,6 +6,21 @@
 module.exports = {
   autocompleteIngredient: [
     {
+      name: 'this shouldn\'t come up',
+      image: 'apple-jelly.jpg',
+      id: 10019297,
+      aisle: 'Nut butters, Jams, and Honey',
+      possibleUnits: [
+        'g',
+        'oz',
+        'packet',
+        'teaspoon',
+        'cup',
+        'serving',
+        'tablespoon',
+      ],
+    },
+    {
       name: 'apple',
       image: 'apple.jpg',
       id: 9003,
