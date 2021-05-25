@@ -1,4 +1,5 @@
 const express = require('express');
+const axios = require('axios');
 
 const app = express();
 
@@ -8,33 +9,44 @@ app.use(express.urlencoded({ extended: true }));
 
 const port = 5000;
 
+const sampleData = require('./samplePantry');
+const sampleIngredientData = require('./sampleIngredients.js');
 
-app.get('/ingredients/auto', (req, res) => {
-  var dummydata = [
-    {
-        id: 296687,
-        title: "chicken",
-        imageType: "jpg"
-    },
-    {
-        id: 42569,
-        title: "chicken bbq",
-        imageType: "jpg"
-    },
-
-    {
-        id: 83890,
-        title: "chicken blt",
-        imageType: "jpg"
-    },
-    {
-        id: 737543,
-        title: "chicken pie",
-        imageType: "jpg"
-    }
-  ]
-  res.send(dummydata);
+app.get('/pantry', (req, res) => {
+  pantry = sampleData.samplePantry;
+  res.status(200).send(pantry);
 })
+
+app.delete('/pantry/*', (req, res) => {
+
+})
+
+app.get('/ingredients', (req, res) => {
+  var query = req.query.query;
+  axios.get(`http://3.135.209.178/ingredients?query=${query}`)
+    .then((success) => {
+      console.log(success.data);
+      res.send(success.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+
+
+  // ingredients = sampleIngredientData.dummydata;
+  // res.status(200).send(ingredients);
+});
+
+app.get('/filteredRecipes', (req, res) => {
+  var ingredients = req.query.ingredients;
+  axios.get(`http://3.135.209.178/recipes?ingredients=${ingredients}`)
+    .then((success) => {
+      res.send(success.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
 
 app.listen(port, () => {
   /* eslint-disable-next-line no-console */
