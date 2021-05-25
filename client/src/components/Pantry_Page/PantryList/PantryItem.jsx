@@ -11,6 +11,7 @@ const PantryItem = (props) => {
 
   var item = props.item;
   var deleteFunc = props.delete;
+  var itemName = item.ingredient.substring(0, 1).toUpperCase() + item.ingredient.substring(1).toLowerCase();
 
   var openUpdate = () => {
     setShowUpdate(true);
@@ -25,14 +26,12 @@ const PantryItem = (props) => {
 
   return (
     <div id='pantryItem'>
-      <h3>{item.ingredient}</h3>
+      <h3>{itemName}</h3>
       {showUpdate
         ? <div id='updateField'>
             <input type='text' id='updateQuantity' placeholder='Quantity'/>
-            {/* <div id='updateButtons'> */}
-              <button onClick={() => {closeUpdate(item.id, 1, $('#updateQuantity').val())}}>Submit</button>
-              <button onClick={() => closeUpdate()}>Cancel</button>
-            {/* </div> */}
+            <button onClick={() => {closeUpdate(item.id, 1, $('#updateQuantity').val())}}>Submit</button>
+            <button onClick={() => closeUpdate()}>Cancel</button>
           </div>
         : <h3>{item.quantity}</h3>
       }
