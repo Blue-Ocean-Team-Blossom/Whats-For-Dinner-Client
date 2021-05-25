@@ -32,6 +32,14 @@ const APIProvider = ({ children }) => {
     setPantry(pantryCopy);
   };
 
+  const autocomplete = (e) => {
+    e.preventDefault();
+    const { value } = e.target;
+    if (value.length > 2) {
+      axios.get()
+    }
+  };
+
   /*******************************************************************************************/
 
   return (
@@ -41,6 +49,7 @@ const APIProvider = ({ children }) => {
       getPantry,
       deleteFromPantry,
       addToPantry,
+      autocomplete,
     }}
     >
       {children}
