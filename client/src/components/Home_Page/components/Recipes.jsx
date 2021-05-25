@@ -39,7 +39,7 @@ const Recipe = (props) => {
 
       {showdetails ?
         <div className='modal'>
-          <div title={recipeinfo.id} className='recipe'>
+          <div className='recipe'>
             <h1 className='recipeTitle'>{recipeinfo.title}</h1>
             <img className='recipeImage' src={recipeinfo.image}/>
             {recipeinfo.summary ?

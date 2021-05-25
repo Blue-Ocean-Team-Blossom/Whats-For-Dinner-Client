@@ -1,3 +1,4 @@
+/* eslint-disable */
 const express = require('express');
 const axios = require('axios');
 
@@ -29,19 +30,8 @@ app.get('/Recipe/:id', (req, res) => {
 
 const port = 5000;
 
-const sampleIngredientData = require('./sampleIngredients.js');
-
-app.get('/pantry', (req, res) => {
-  pantry = sampleData.samplePantry;
-  res.status(200).send(pantry);
-});
-
-app.delete('/pantry/*', (req, res) => {
-
-});
-
 app.get('/ingredients', (req, res) => {
-  var query = req.query.query;
+  let query = req.query.query;
   axios.get(`http://3.135.209.178/ingredients?query=${query}`)
     .then((success) => {
       console.log(success.data);
@@ -50,14 +40,10 @@ app.get('/ingredients', (req, res) => {
     .catch((err) => {
       res.send(err);
     });
-
-
-  // ingredients = sampleIngredientData.dummydata;
-  // res.status(200).send(ingredients);
 });
 
 app.get('/filteredRecipes', (req, res) => {
-  var ingredients = req.query.ingredients;
+  let ingredients = req.query.ingredients;
   axios.get(`http://3.135.209.178/recipes?ingredients=${ingredients}`)
     .then((success) => {
       res.send(success.data);
@@ -71,4 +57,3 @@ app.listen(port, () => {
   /* eslint-disable-next-line no-console */
   console.log(`listening on port ${port}`);
 });
-
