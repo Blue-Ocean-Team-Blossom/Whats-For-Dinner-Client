@@ -30,8 +30,10 @@ const PantryItem = (props) => {
       {showUpdate
         ? <div id='updateField'>
             <input type='text' id='updateQuantity' placeholder='Quantity'/>
-            <button onClick={() => {closeUpdate(item.id, 1, $('#updateQuantity').val())}}>Submit</button>
-            <button onClick={() => closeUpdate()}>Cancel</button>
+            <div>
+              <button onClick={() => {closeUpdate(item.id, 1, $('#updateQuantity').val())}}>Submit</button>
+              <button onClick={() => closeUpdate()}>Cancel</button>
+            </div>
           </div>
         : <h3>{item.quantity}</h3>
       }

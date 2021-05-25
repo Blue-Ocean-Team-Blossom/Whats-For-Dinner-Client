@@ -47,12 +47,12 @@ const Recipe = (props) => {
       {showpantryrecipes ?
         <h1 className='recipes'>Suggested Recipe List</h1>
       : <h1 className='recipes'>Filtered Recipe List</h1>}
+      <br></br>
       <div id='recipesContainer'>
         <InfiniteScroll
           dataLength={items.length}
           next={fetchMoreData}
           hasMore={hasmore}
-          // loader={<h4>Loading...</h4>}
           scrollableTarget='recipesContainer'
           endMessage={
             <p style={{ textAlign: 'center' }}>
@@ -95,7 +95,7 @@ const Recipe = (props) => {
             <p className='recipeExtraInfo'>
               Servings: {recipeinfo.servings}<br></br>
               Ready in {recipeinfo.readyInMinutes} Minutes<br></br>
-              Cooking Instructions: <a href={recipeinfo.spoonacularSourceUrl}>{recipeinfo.title}</a><br></br>
+              Cooking Instructions: <a href={recipeinfo.spoonacularSourceUrl} target='_blank'>{recipeinfo.title}</a><br></br>
             </p>
             <a onClick={close} className="close"></a>
           </div>

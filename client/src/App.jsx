@@ -32,7 +32,6 @@ const App = () => {
     } else if (view === 'pantryList') {
       return (
         <div className='mainSubContainer'>
-          <h1>Pantry List</h1>
           <Pantry />
         </div>
       )
