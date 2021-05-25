@@ -11,8 +11,8 @@ const port = 5000;
 
 const { autocompleteIngredient } = require('./spoonacularSample');
 
-const sampleUserId = 1; // CMD + F --> "TEMPORARY, FIX LATER FOR WHAT FRONT END SENDS"
-// This needs to be fixed later. This is the exact comment text, just search it.
+const sampleUserId = 1; // CMD + F --> "Fix to add userId later"
+// This needs to go away later later. This is the exact comment text, just search it.
 
 const uri = 'http://3.135.209.178';
 
@@ -36,9 +36,7 @@ app.get('/Recipe/:id', (req, res) => {
     });
 });
 
-
-
-app.get('/pantry', (req, res) => {
+app.get(`${uri}/pantry`, (req, res) => {
   pantry = sampleData.samplePantry;
   res.status(200).send(pantry);
 });
@@ -63,16 +61,15 @@ app.post('/pantry/autocomplete', (req, res) => {
 
 app.post('/pantry', (req, res) => {
   const { itemData, quantity } = req.body; // Fix to add userId later
-  const userId = sampleUserId;
+  const userId = sampleUserId; // get rid of this later
   const { name, id } = itemData;
   const parse = {
-    name,
-    id,
+    ingredient: name,
+    ingredientId: id,
     quantity: Number(quantity),
-    userId,
   };
-  console.log(parse);
   axios({
+    method: 'post',
     url: `${uri}/pantry`,
     data: parse,
   })
@@ -87,7 +84,7 @@ app.post('/pantry', (req, res) => {
     });
 });
 
-app.delete('/pantry/*', (req, res) => {
+app.delete(`${uri}/pantry/*`, (req, res) => {
 
 });
 
