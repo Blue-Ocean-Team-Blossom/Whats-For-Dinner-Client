@@ -17,7 +17,7 @@ const sampleUserId = 1; // CMD + F --> "Fix to add userId later"
 const uri = 'http://3.135.209.178';
 
 app.get('/RecipesByPantry', (req, res) => {
-  axios.get('http://3.135.209.178/recipes/pantry?id=1')
+  axios.get(`${uri}/recipes/pantry?id=1`)
     .then((success) => {
       res.send(success.data);
     })
@@ -27,7 +27,7 @@ app.get('/RecipesByPantry', (req, res) => {
 });
 
 app.get('/Recipe/:id', (req, res) => {
-  axios.get(`http://3.135.209.178/recipes/${req.params.id}`)
+  axios.get(`${uri}/recipes/${req.params.id}`)
     .then((success) => {
       res.send(success.data);
     })
@@ -57,7 +57,7 @@ app.delete(`/pantry`, (req, res) => {
 });
 
 app.put(`/pantry`, (req, res) => {
-  axios.put(`http://3.135.209.178/pantry`, req.body)
+  axios.put(`${uri}/pantry`, req.body)
   .then(results => {
     res.send(results.data)
   })
