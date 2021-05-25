@@ -8,7 +8,9 @@
     "test-watch": "jest --watchAll --verbose",
     "test-cov": "jest --verbose --coverage",
     "react-dev": "webpack --config ./webpack.config.js --mode development -w",
-    "server-dev": "npx nodemon server/index.js"
+    "server-dev": "npx nodemon server/index.js",
+    "react-prod": "webpack --config ./webpack.config.js --mode production",
+    "server-prod": "node server/index.js"
   },
   "repository": {
     "type": "git",
