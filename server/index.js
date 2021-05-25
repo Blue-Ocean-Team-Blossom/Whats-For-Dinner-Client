@@ -12,8 +12,8 @@ const port = 5000;
 const sampleData = require('./samplePantry');
 const { autocompleteIngredient } = require('./spoonacularSample');
 
-const sampleUserId = 1; // CMD + F --> "TEMPORARY, FIX LATER FOR WHAT FRONT END SENDS"
-// This needs to be fixed later. This is the exact comment text, just search it.
+const sampleUserId = 1; // CMD + F --> "Fix to add userId later"
+// This needs to go away later later. This is the exact comment text, just search it.
 
 const uri = 'http://3.135.209.178';
 
@@ -64,7 +64,7 @@ app.post('/pantry/autocomplete', (req, res) => {
 
 app.post('/pantry', (req, res) => {
   const { itemData, quantity } = req.body; // Fix to add userId later
-  const userId = sampleUserId;
+  const userId = sampleUserId; // get rid of this later
   const { name, id } = itemData;
   const parse = {
     name,
