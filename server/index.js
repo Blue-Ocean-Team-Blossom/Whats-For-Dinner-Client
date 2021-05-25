@@ -36,10 +36,35 @@ app.get('/Recipe/:id', (req, res) => {
     });
 });
 
-app.get(`${uri}/pantry`, (req, res) => {
-  pantry = sampleData.samplePantry;
-  res.status(200).send(pantry);
+app.get(`/pantry`, (req, res) => {
+  axios.get(`${uri}/pantry?id=1`)
+    .then(results => {
+      res.send(results.data)
+    })
+    .catch(err => {
+      res.send(err)
+    })
 });
+
+app.delete(`/pantry`, (req, res) => {
+  axios.delete(`${uri}/pantry`, {data: req.body})
+    .then(results => {
+      res.send(results.data)
+    })
+    .catch(err => {
+      res.send(err)
+    })
+});
+
+app.put(`/pantry`, (req, res) => {
+  axios.put(`http://3.135.209.178/pantry`, req.body)
+  .then(results => {
+    res.send(results.data)
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
 
 app.post('/pantry/autocomplete', (req, res) => {
   const { value } = req.body;
@@ -84,9 +109,6 @@ app.post('/pantry', (req, res) => {
     });
 });
 
-app.delete(`${uri}/pantry/*`, (req, res) => {
-
-});
 
 app.get('/ingredients', (req, res) => {
   var query = req.query.query;

@@ -4,12 +4,12 @@
 }
 
 #pantryList {
-  font-size: clamp(0.2em, 1em, 1.5em);
-  /* align-content: center; */
-  /* width: 80%; */
-  text-align: center;
+  /* font-size: clamp(0.2em, 1em, 1.5em); */
+  align-self: center;
+  width: 80%;
   margin: 0 auto;
   margin-top: 5%;
+  justify-self: center;
 }
 
 #pantryListHeader {
@@ -18,14 +18,14 @@
   display: inline-grid;
   grid-template-columns: 20% 20% auto;
   text-decoration: underline;
-  align-self: center;
+  /* align-self: center; */
 }
 
 #pantryItem {
   /* margin-left: 5%; */
   width: 100%;
   display: inline-grid;
-  text-align: center;
+  /* text-align: center; */
   grid-template-columns: 20% 20% auto;
   margin: 0 auto;
   /* align-items: center; */
@@ -38,7 +38,6 @@
 #updateQuantity {
   width: 60%;
   margin: 0 auto;
-  /* height: 1.5em; */
 }
 
 #updateField {
@@ -74,6 +73,22 @@
   cursor: pointer;
   color: whitesmoke;
   background: #616E7C;
+  -webkit-transition: top 0.09s ease-in;
+}
+
+.fill:hover {
+  color: whitesmoke;
+}
+
+.fill:before {
+  content: "";
+  position: absolute;
+  background: #616E7C;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: -1;
   -webkit-transition: top 0.09s ease-in;
 }
 
