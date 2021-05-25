@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { RecipeContext } from './RecipeContext';
@@ -7,73 +7,111 @@ import { PantryContext } from './PantryContext';
 export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
-
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
   const { pantry, setPantry } = useContext(PantryContext);
+  const { autocompOpts, setAutocompOpts } = useContext(PantryContext);
 
-  /*********************************FUNCTION CALLS GO HERE************************************/
+  /** *******************************FUNCTION CALLS GO HERE*********************************** */
 
-
-  /****************************************Pantry*********************************************/
-  const getPantry = async () => {
-    var pantryList = await axios.get('/pantry')
+  /** **************************************Pantry******************************************** */
+  const getPantry = async (userId) => {
+    const pantryList = await axios.get('http://3.135.209.178/pantry?id=1');
     setPantry(pantryList.data);
-    return;
-  }
+  };
 
-  const deleteFromPantry = async (id) => {
-    axios.delete(`/pantry/${id}`)
-  }
+  const deleteFromPantry = async (id, userId) => {
+    console.log(typeof (id));
+    axios.delete('http://3.135.209.178/pantry', { data: { id } })
+      .then(() => {
+        getPantry(userId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const updateItem = async (id, userId, quantity) => {
+    const updateData = {
+      pantryId: id,
+      quantity,
+    };
+    console.log(typeof (quantity));
+    axios.put('http://3.135.209.178/pantry', updateData)
+      .then(() => {
+        getPantry(userId);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const addToPantry = (e) => {
     e.preventDefault();
-    const [item, quantity] = [e.target[0].value, e.target[2].value];
-    const pantryAddParse = { ingredient: item, quantity };
-    const pantryCopy = pantry.slice();
-    pantryCopy.push(pantryAddParse);
-    setPantry(pantryCopy);
+    const quantity = e.target[2].value;
+    const itemData = autocompOpts[0];
+    const pantryAddParse = { itemData, quantity };
+    axios.post('/pantry', pantryAddParse)
+      .then(() => getPantry())
+      .catch((err) => false);
   };
 
-  /*******************************************************************************************/
+  const autocomplete = async (e) => {
+    e.preventDefault();
+    const { value } = e.target;
+    const options = { value };
+    if (value.length > 2) {
+      const result = await axios.post('/pantry/autocomplete', options)
+        .then((success) => success.data)
+        .catch((err) => {
+          console.error(`Pantry autocomplete error: ${err}`);
+          return false;
+        });
+      if (result) {
+        setAutocompOpts(result);
+      }
+    }
+  };
 
-  /***********************************RecipesByPantry*********************************************/
+  /** **************************************************************************************** */
+
+  /** *********************************RecipesByPantry******************************************* */
 
   const getRecipesByPantry = async () => {
     axios.get('/RecipesByPantry')
       .then((success) => {
         setRecipe(success.data);
-        return;
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
-  /*******************************************************************************************/
+  /** **************************************************************************************** */
 
-  /***********************************RecipeById*********************************************/
+  /** *********************************RecipeById******************************************** */
 
   const getRecipeById = async (id) => {
     axios.get(`/Recipe/${id}`)
       .then((success) => {
         setRecipeinfo(success.data);
-        return;
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
-  /*******************************************************************************************/
+  /** **************************************************************************************** */
 
   return (
     <APIContext.Provider value={{
       /* Include functions here */
-      //Pantry
+      // Pantry
       getPantry,
       deleteFromPantry,
       addToPantry,
-      //Recipes
+      autocomplete,
+      updateItem,
+      // Recipes
       getRecipesByPantry,
       getRecipeById,
     }}

@@ -6,6 +6,7 @@ import sampleData from './sampleData/samplePantry.js';
 export const PantryContext = createContext({});
 
 const PantryProvider = ({ children }) => {
+  const [autocompOpts, setAutocompOpts] = useState([]);
   const [pantry, setPantry] = useState(sampleData.samplePantry);
 
   return (
@@ -13,6 +14,8 @@ const PantryProvider = ({ children }) => {
       value={{
         pantry,
         setPantry,
+        autocompOpts,
+        setAutocompOpts,
       }}
     >
       {children}

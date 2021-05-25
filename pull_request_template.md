@@ -1,5 +1,5 @@
 ## Changes (Please explain changes)
-
+[Please insert description]
 
 ## Checklist
 ### PR Type (Select all that apply and describe above):
@@ -22,8 +22,8 @@
 - [ ] Looks good on mobile
 - [ ] Did you lint?
 
-## Screenshots?
-
+## Screenshots/GIFs?
+![Description](uri_to_photo_or_gif)
 
 ## REVIEWER ONLY
 ### If Issue(s) found:
@@ -33,4 +33,4 @@
 - [ ] Error(s) in desktop view(s)
 - [ ] Error(s) in mobile view(s)
 - [ ] Error(s) in functionality(s)
-Make change-request and provide more detail on what is wrong.
+[Make change-request and provide more detail on what is wrong.]
