@@ -33,11 +33,15 @@ const PantryItem = (props) => {
   }
 
   var subtract = (id, userId, change, current) => {
-    var newQuantity = parseInt(current) + parseInt(change);
-    updateItem(id, userId, newQuantity);
-    closeUpdate();
+    var newQuantity = parseInt(current) - parseInt(change);
+    if (newQuantity > 0) {
+      updateItem(id, userId, newQuantity);
+      closeUpdate();
+    } else {
+      deleteFunc(id, userId);
+      closeUpdate();
+    }
   }
-
 
   return (
     <div id='pantryItem'>
