@@ -37,9 +37,7 @@ app.get('/Recipe/:id', (req, res) => {
     });
 });
 
-
-
-app.get('/pantry', (req, res) => {
+app.get(`${uri}/pantry`, (req, res) => {
   pantry = sampleData.samplePantry;
   res.status(200).send(pantry);
 });
@@ -67,13 +65,12 @@ app.post('/pantry', (req, res) => {
   const userId = sampleUserId; // get rid of this later
   const { name, id } = itemData;
   const parse = {
-    name,
-    id,
+    ingredient: name,
+    ingredientId: id,
     quantity: Number(quantity),
-    userId,
   };
-  console.log(parse);
   axios({
+    method: 'post',
     url: `${uri}/pantry`,
     data: parse,
   })
@@ -88,7 +85,7 @@ app.post('/pantry', (req, res) => {
     });
 });
 
-app.delete('/pantry/*', (req, res) => {
+app.delete(`${uri}/pantry/*`, (req, res) => {
 
 });
 
