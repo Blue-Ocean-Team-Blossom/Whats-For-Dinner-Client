@@ -1,4 +1,4 @@
-/* eslint-disable */
+// /* eslint-disable */
 const express = require('express');
 const axios = require('axios');
 require('dotenv').config();
@@ -35,35 +35,35 @@ app.get('/Recipe/:id', (req, res) => {
     });
 });
 
-app.get(`/pantry`, (req, res) => {
+app.get('/pantry', (req, res) => {
   axios.get(`${uri}/pantry?id=1`)
-    .then(results => {
-      res.send(results.data)
+    .then((results) => {
+      res.send(results.data);
     })
-    .catch(err => {
-      res.send(err)
-    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
-app.delete(`/pantry`, (req, res) => {
-  axios.delete(`${uri}/pantry`, {data: req.body})
-    .then(results => {
-      res.send(results.data)
+app.delete('/pantry', (req, res) => {
+  axios.delete(`${uri}/pantry`, { data: req.body })
+    .then((results) => {
+      res.send(results.data);
     })
-    .catch(err => {
-      res.send(err)
-    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
-app.put(`/pantry`, (req, res) => {
+app.put('/pantry', (req, res) => {
   axios.put(`${uri}/pantry`, req.body)
-  .then(results => {
-    res.send(results.data)
-  })
-  .catch(err => {
-    res.send(err)
-  })
-})
+    .then((results) => {
+      res.send(results.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
 
 app.post('/pantry/autocomplete', (req, res) => {
   const { value } = req.body;
@@ -113,7 +113,7 @@ app.post('/pantry', (req, res) => {
 });
 
 app.get('/ingredients', (req, res) => {
-  let query = req.query.query;
+  const { query } = req.query;
   axios.get(`${uri}/ingredients?query=${query}`)
     .then((success) => {
       res.send(success.data);
@@ -124,7 +124,7 @@ app.get('/ingredients', (req, res) => {
 });
 
 app.get('/filteredRecipes', (req, res) => {
-  let ingredients = req.query.ingredients;
+  const { ingredients } = req.query;
   axios.get(`${uri}/recipes?ingredients=${ingredients}`)
     .then((success) => {
       res.send(success.data);
