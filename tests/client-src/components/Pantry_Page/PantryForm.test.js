@@ -5,7 +5,10 @@ import Pantry from '../../../../client/src/components/Pantry_Page/index';
 import App from '../../../../client/src/App';
 import PantryItem from '../../../../client/src/components/Pantry_Page/PantryList/PantryItem';
 import { RootProvider } from '../../../../client/src/state_&_contexts/RootContext';
-// import { PantryContext, PantryProvider } from '../../../../client/src/state_&_contexts/PantryContext';
+// import {
+//  PantryContext,
+//  PantryProvider
+// } from '../../../../client/src/state_&_contexts/PantryContext';
 
 describe('PantryForm', () => {
   test('PantryForm renders form with correct inputs and submit button: ', () => {
@@ -30,12 +33,13 @@ describe('PantryForm', () => {
     expect(wrapper.find('#pantryInputSelect').type()).toEqual('datalist');
   });
 
-  test('PantryForm submit of one item will increase amount of PantryItems by one: ', async () => {
-    const wrapper = mount(
-      <RootProvider>
-        <App />
-      </RootProvider>
-    );
-    console.log(wrapper.debug());
-  });
+  // test(
+  //  'PantryForm submit of one item will increase amount of PantryItems by one: ', async () => {
+  //   const wrapper = mount(
+  //     <RootProvider>
+  //       <App />
+  //     </RootProvider>
+  //   );
+  //   console.log(wrapper.debug());
+  // });
 });
