@@ -1,18 +1,22 @@
 html, body {
   background-image: linear-gradient(to bottom right, #1F2933, #323F4B);
-  height: 95%;
+  height: 100%;
   font-family: 'Lato', sans-serif;
   color: #F5F7FA;
+  overflow: hidden;
 }
 
 h1 {
   margin-bottom: 25px;
 }
 
+#app_title {
+  font-size: 1.5vw;
+}
 
 .mainContainer {
   display: grid;
-  grid-template-columns: minmax(200px, 300px ) 1fr;
+  grid-template-columns: minmax(200px, 300px) 1fr;
 }
 
 .mainSubContainer {
@@ -28,7 +32,6 @@ h1 {
   grid-column-start: 1;
   grid-column-end: 1;
   column-width: 250px;
-
 }
 
 .btn {
@@ -85,4 +88,3 @@ a:link {
 a:visited {
   color: lightgoldenrodyellow;
 }
-

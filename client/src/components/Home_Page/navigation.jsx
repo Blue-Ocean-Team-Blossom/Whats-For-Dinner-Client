@@ -11,8 +11,12 @@ const Nav = (props) => {
 
   return (
     <div>
+      <br></br>
       <button className='btn fill' onClick={() => {props.changeView('recipeList'), changeRecipeView(true)}}>Home</button>
       <button className='btn fill' onClick={() => props.changeView('pantryList')}>Pantry</button>
+      <br></br>
+      <hr width={'78.6%'} align={'left'}></hr>
+      <br></br>
       {props.homeView === 'recipeList' ?
         showpantryrecipes ?
         <button className='btn fill' onClick={() => changeRecipeView(false)}>Search Recipes</button>
