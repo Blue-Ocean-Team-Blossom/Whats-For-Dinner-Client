@@ -26,7 +26,7 @@ class FilteredRecipe extends React.Component {
   }
 
   fetchIngredients(string) {
-    axios.get(`/ingredients?query=${string}`)
+    axios.get(`/ingredients?query=${string}&token=${this.props.token}`)
       .then((success) => {
         this.setState ({
           ingredients: success.data
@@ -62,15 +62,20 @@ class FilteredRecipe extends React.Component {
   handleSearchButton (e) {
     e.preventDefault();
     var ingredients = this.state.filter.join(',');
-    axios.get(`/filteredRecipes?ingredients=${ingredients}`)
-    .then((success) => {
-      this.setState({
-        recipes: success.data
+    // axios.get(`/pantry?token=${this.props.token}`)
+    //   .then((success) => {
+    //     success.data
+    //   })
+
+    axios.get(`/filteredRecipes?ingredients=${ingredients}&token=${this.props.token}`)
+      .then((success) => {
+        this.setState({
+          recipes: success.data
+        })
       })
-    })
-    .catch((err) => {
-      console.log(err);
-    })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
 

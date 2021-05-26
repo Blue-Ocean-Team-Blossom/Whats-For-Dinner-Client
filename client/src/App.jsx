@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Pantry from './components/Pantry_Page/index'
 import Nav from './components/Home_Page/navigation'
 import Home from './components/Home_Page/index'
+import Login from './components/Login_Signup_Page/Login_Signup'
 
 const App = () => {
 
@@ -33,6 +34,12 @@ const App = () => {
       return (
         <div className='mainSubContainer'>
           <Pantry />
+        </div>
+      )
+    } else if (view === 'login') {
+      return (
+        <div>
+          <Login />
         </div>
       )
     }
