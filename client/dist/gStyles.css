@@ -8,6 +8,7 @@ html, body {
 
 h1 {
   margin-bottom: 25px;
+
 }
 
 #app_title {
@@ -32,6 +33,7 @@ h1 {
   grid-column-start: 1;
   grid-column-end: 1;
   column-width: 250px;
+
 }
 
 .btn {
@@ -73,13 +75,13 @@ h1 {
   right: 0;
   top: 100%;
   z-index: -1;
+  transition: top 0.09s ease-in;
   -webkit-transition: top 0.09s ease-in;
 }
 
 .fill:hover:before {
   top: 0;
 }
-
 
 a:link {
   color: lightblue;
@@ -88,3 +90,5 @@ a:link {
 a:visited {
   color: lightgoldenrodyellow;
 }
+
+

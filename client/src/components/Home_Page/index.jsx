@@ -5,10 +5,12 @@ import Recipe from './components/Recipes';
 
 import { RecipeContext } from '../../state_&_contexts/RecipeContext';
 import { APIContext } from '../../state_&_contexts/APIContext';
+import { UserContext } from '../../state_&_contexts/UserContext';
 
 const Home = () => {
   const { recipe, showpantryrecipes } = useContext(RecipeContext);
   const { getRecipesByPantry } = useContext(APIContext);
+  const { token } = useContext(UserContext);
 
   useEffect(() => {
     getRecipesByPantry();
@@ -19,7 +21,7 @@ const Home = () => {
       <br></br>
       {showpantryrecipes ?
         <Recipe recipeList={recipe}/>
-      : <FilteredRecipe />}
+      : <FilteredRecipe token={token}/>}
     </div>
   )
 };

@@ -1,4 +1,4 @@
-// /* eslint-disable */
+/* eslint-disable */
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { RecipeContext } from './RecipeContext';
@@ -11,18 +11,59 @@ const APIProvider = ({ children }) => {
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
   const { pantry, setPantry } = useContext(PantryContext);
   const { autocompOpts, setAutocompOpts } = useContext(PantryContext);
+  const { userId, setUserId, token, setToken, username, setUsername } = useContext(UserContext);
   // remember to add useContext for UserContext
 
   /** *******************************FUNCTION CALLS GO HERE*********************************** */
 
+  /******************************************User***********************************************/
+  const createUser = (e) => {
+    e.preventDefault();
+    var user = {
+      username: e.target[0].value,
+      password: e.target[1].value
+    };
+    axios.post('/signup', user)
+      .then((result) => {
+        setUserId(result.data.user.id);
+        setToken(result.data.user.token);
+        setUsername(result.data.user.username);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const userLogin = (e) => {
+    e.preventDefault();
+    var user = {
+      username: e.target[0].value,
+      password: e.target[1].value
+    };
+    axios.post('/login', user)
+      .then((result) => {
+        setUserId(result.data.user.id);
+        setToken(result.data.user.token);
+        setUsername(result.data.user.username);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+
   /** **************************************Pantry******************************************** */
   const getPantry = async (userId) => {
-    const pantryList = await axios.get('/pantry');
+    const pantryList = await axios.get(`/pantry?id=${userId}&token=${token}`);
     setPantry(pantryList.data);
   };
 
   const deleteFromPantry = async (id, userId) => {
-    axios.delete('/pantry', { data: { id } })
+    const deleteData = {
+      data: {id: id},
+      token: token
+    }
+    axios.delete(`/pantry`, deleteData)
       .then(() => {
         getPantry(userId);
       })
@@ -33,10 +74,13 @@ const APIProvider = ({ children }) => {
 
   const updateItem = async (id, userId, quantity) => {
     const updateData = {
-      pantryId: id,
-      quantity,
-    };
-    axios.put('/pantry', updateData)
+      data: {
+        pantryId: id,
+        quantity: quantity
+      },
+      token: token
+    }
+    axios.put(`/pantry`, updateData)
       .then(() => {
         getPantry(userId);
       })
@@ -49,10 +93,14 @@ const APIProvider = ({ children }) => {
     e.preventDefault();
     const quantity = e.target[2].value;
     const itemData = autocompOpts[0];
-    const pantryAddParse = { itemData, quantity };
-    axios.post('/pantry', pantryAddParse)
-      .then(() => getPantry())
-      .catch((err) => false);
+    if (itemData.name === e.target[0].value) {
+      console.log('IAN TEST ON ADDING PANTRY ITEM: ', e.target);
+      console.log('IAN TEST ON ADDING PANTRY ITEM: ', autocompOpts);
+      const pantryAddParse = { itemData, quantity, token };
+      axios.post('/pantry', pantryAddParse)
+        .then(() => getPantry(userId))
+        .catch((err) => false);
+    }
   };
 
   const autocomplete = async (e) => {
@@ -77,7 +125,7 @@ const APIProvider = ({ children }) => {
   /** *********************************RecipesByPantry******************************************* */
 
   const getRecipesByPantry = async () => {
-    axios.get('/RecipesByPantry')
+    axios.get(`/RecipesByPantry?token=${token}`)
       .then((success) => {
         setRecipe(success.data);
       })
@@ -91,7 +139,7 @@ const APIProvider = ({ children }) => {
   /** *********************************RecipeById******************************************** */
 
   const getRecipeById = async (id) => {
-    axios.get(`/Recipe/${id}`)
+    axios.get(`/Recipe/${id}?token=${token}`)
       .then((success) => {
         setRecipeinfo(success.data);
       })
@@ -105,6 +153,9 @@ const APIProvider = ({ children }) => {
   return (
     <APIContext.Provider value={{
       /* Include functions here */
+      //User
+      createUser,
+      userLogin,
       // Pantry
       getPantry,
       deleteFromPantry,
