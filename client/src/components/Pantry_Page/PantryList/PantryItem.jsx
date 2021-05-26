@@ -17,11 +17,30 @@ const PantryItem = (props) => {
     setShowUpdate(true);
   }
 
-  var closeUpdate = (id, userId, quantity) => {
-    if (id && userId && quantity) {
-      updateItem(id, userId, parseInt(quantity))
-    }
+  var closeUpdate = () => {
     setShowUpdate(false);
+  }
+
+  var update = (id, userId, change) => {
+    updateItem(id, userId, parseInt(change));
+    closeUpdate();
+  }
+
+  var add = (id, userId, change, current) => {
+    var newQuantity = parseInt(current) + parseInt(change);
+    updateItem(id, userId, newQuantity);
+    closeUpdate();
+  }
+
+  var subtract = (id, userId, change, current) => {
+    var newQuantity = parseInt(current) - parseInt(change);
+    if (newQuantity > 0) {
+      updateItem(id, userId, newQuantity);
+      closeUpdate();
+    } else {
+      deleteFunc(id, userId);
+      closeUpdate();
+    }
   }
 
   return (
@@ -30,8 +49,12 @@ const PantryItem = (props) => {
       {showUpdate
         ? <div id='updateField'>
             <input type='text' id='updateQuantity' placeholder='Quantity'/>
-            <button onClick={() => {closeUpdate(item.id, 1, $('#updateQuantity').val())}}>Submit</button>
-            <button onClick={() => closeUpdate()}>Cancel</button>
+            <div>
+              <button onClick={() => add(item.id, 1, $('#updateQuantity').val(), item.quantity)}> + </button>
+              <button onClick={() => subtract(item.id, 1, $('#updateQuantity').val(), item.quantity)}> - </button>
+              <button onClick={() => update(item.id, 1, $('#updateQuantity').val())}>Update</button>
+              <button onClick={() => closeUpdate()}>Cancel</button>
+            </div>
           </div>
         : <h3>{item.quantity}</h3>
       }
