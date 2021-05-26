@@ -83,7 +83,7 @@ class FilteredRecipe extends React.Component {
         </div>
         <div className="filter-list">
           <div className="filter">FILTER</div>
-          <button className="btn" type="button" onClick={this.handleSearchButton}>Search</button>
+          <button className="btn fill" type="button" onClick={this.handleSearchButton}>Search</button>
           <FilteredList list={this.state.filter} delete={this.deleteFilter}/>
         </div>
         <div>

@@ -5,12 +5,8 @@
  height: 40px;
  border-radius: 40px;
  padding-top: 10px;
-
-}
-
-.search-box:hover > .search-txt {
-  width: 240px;
-  padding: 0 6px;
+ width: 240px;
+ padding: 0 6px;
 }
 
 .search-txt {
@@ -24,6 +20,8 @@
  line-height: 40px;
  width: 0px;
  font-weight: bold;
+ width: 240px;
+ padding: 0 6px;
 }
 
 .ingredient:hover{
@@ -54,26 +52,25 @@
 }
 
 #mdiv {
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  border: 1px solid black;
+  width: 10px;
+  height: 10px;
+  background-color: #1F2933;
   float: right;
 }
 
 .mdiv {
-  height: 20px;
-  width: 2px;
-  margin-left: 12px;
-  background-color: black;
+  height: 10px;
+  width: 1px;
+  margin-left: 6px;
+  background-color: white;
   transform: rotate(45deg);
   Z-index: 1;
 }
 
 .md {
-  height: 20px;
-  width: 2px;
-  background-color: black;
+  height: 10px;
+  width: 1px;
+  background-color: white;
   transform: rotate(90deg);
   Z-index: 2;
 }
