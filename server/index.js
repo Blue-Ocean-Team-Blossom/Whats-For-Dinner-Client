@@ -102,7 +102,6 @@ app.post('/pantry', (req, res) => {
       data: parse,
     })
       .then((response) => {
-        console.log('successful post to pantry');
         res.status(201).send();
         res.end();
       })
