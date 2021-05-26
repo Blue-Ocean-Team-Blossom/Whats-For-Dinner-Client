@@ -9,10 +9,13 @@ h1 {
   margin-bottom: 25px;
 }
 
+#app_title {
+  font-size: 1.5vw;
+}
 
 .mainContainer {
   display: grid;
-  grid-template-columns: minmax(200px, 300px ) 1fr;
+  grid-template-columns: minmax(200px, 300px) 1fr;
 }
 
 .mainSubContainer {
@@ -28,7 +31,6 @@ h1 {
   grid-column-start: 1;
   grid-column-end: 1;
   column-width: 250px;
-
 }
 
 .btn {
@@ -85,4 +87,3 @@ a:link {
 a:visited {
   color: lightgoldenrodyellow;
 }
-

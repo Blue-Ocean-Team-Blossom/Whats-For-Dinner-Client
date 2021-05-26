@@ -41,7 +41,8 @@ const App = () => {
 
   return (
     <div>
-      <h1>What's for Dinner?</h1>
+      <h1 id='app_title'>What's for Dinner?</h1>
+      <hr></hr>
       <div className='mainContainer'>
       <div className='navContainer'>
         <Nav changeView={changeView} homeView={view}/>

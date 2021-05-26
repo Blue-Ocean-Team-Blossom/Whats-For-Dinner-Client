@@ -16,6 +16,7 @@ const Home = () => {
 
   return (
     <div>
+      <br></br>
       {showpantryrecipes ?
         <Recipe recipeList={recipe}/>
       : <FilteredRecipe />}
