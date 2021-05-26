@@ -44,10 +44,12 @@ class FilteredRecipe extends React.Component {
   }
 
   addIngredient (e) {
-    this.state.filter.push(e.target.innerText);
-    this.setState({
-      filter: this.state.filter
-    })
+    if(!this.state.filter.includes(e.target.innerText)) {
+      this.state.filter.push(e.target.innerText);
+      this.setState({
+        filter: this.state.filter
+      })
+    }
   }
 
   deleteFilter (index) {
