@@ -7,7 +7,8 @@ export const PantryContext = createContext({});
 
 const PantryProvider = ({ children }) => {
   const [autocompOpts, setAutocompOpts] = useState([]);
-  const [pantry, setPantry] = useState(sampleData.samplePantry);
+  const [pantry, setPantry] = useState([]);
+  const [valid, setValid] = useState(true);
 
   return (
     <PantryContext.Provider
