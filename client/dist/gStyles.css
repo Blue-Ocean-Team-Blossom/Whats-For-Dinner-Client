@@ -1,8 +1,9 @@
 html, body {
   background-image: linear-gradient(to bottom right, #1F2933, #323F4B);
-  height: 95%;
+  height: 100%;
   font-family: 'Lato', sans-serif;
   color: #F5F7FA;
+  overflow: hidden;
 }
 
 h1 {
