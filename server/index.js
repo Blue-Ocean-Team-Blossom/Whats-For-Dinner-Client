@@ -135,6 +135,24 @@ app.get('/filteredRecipes', (req, res) => {
     });
 });
 
+app.get('/auth', (req, res) => {
+  axios.get(`${uri}/api/users/current`)
+    .then((response) => {})
+    .catch((err) => {});
+});
+
+app.post('/signup', (req, res) => {
+  axios.post(`${uri}/api/users`)
+    .then((response) => {})
+    .catch((err) => {});
+});
+
+app.post('/login', (req, res) => {
+  axios.post(`${uri}/api/users/login`)
+    .then((response) => {})
+    .catch((err) => {});
+});
+
 app.listen(port, () => {
   /* eslint-disable-next-line no-console */
   console.log(`listening on port ${port}`);

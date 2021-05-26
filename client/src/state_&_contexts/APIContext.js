@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
 import { RecipeContext } from './RecipeContext';
 import { PantryContext } from './PantryContext';
+import { UserContext } from './UserContext';
 
 export const APIContext = createContext({});
 
@@ -10,6 +11,7 @@ const APIProvider = ({ children }) => {
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
   const { pantry, setPantry } = useContext(PantryContext);
   const { autocompOpts, setAutocompOpts } = useContext(PantryContext);
+  // remember to add useContext for UserContext
 
   /** *******************************FUNCTION CALLS GO HERE*********************************** */
 
