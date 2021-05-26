@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import App from '../../client/src/App';
 import Pantry from '../../client/src/components/Pantry_Page/index';
 import Nav from '../../client/src/components/Home_Page/navigation';
