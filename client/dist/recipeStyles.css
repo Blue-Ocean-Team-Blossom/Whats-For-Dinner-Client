@@ -4,15 +4,37 @@
 }
 
 #recipesContainer {
-  height: 75vh;
+  height: 70vh;
   overflow-y: auto;
+}
+
+#recipesContainer::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.75vw rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 0.4vw rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+  border-radius: 0.75vw;
+}
+
+#recipesContainer::-webkit-scrollbar {
+  width: 0.75vw;
+  border-radius: 0.75vw;
+  background-color: #F5F5F5;
+}
+
+#recipesContainer::-webkit-scrollbar-thumb {
+  border: solid 0.02vw black;
+  background-color: lightgoldenrodyellow;
+  border-radius: 0.75vw;
 }
 
 .recipesList {
   margin: auto;
   width: 30%;
-  background-color: #3E4C59;
+  background: linear-gradient(to top, #616E7C 50%, #3E4C59 50%);
   border: solid 0.25vw white;
+  background-size: 100% 200%;
+  background-position: top left;
+  transition: all .2s ease-out;
 
   display: flex;
   flex-direction: column;
@@ -20,8 +42,9 @@
   align-items: center;
 }
 
-.recipesListTitle:hover, .recipesListIMG:hover {
+.recipesList:hover {
   cursor: pointer;
+  background-position: bottom left;
 }
 
 .recipesListTitle {
@@ -52,7 +75,18 @@
   opacity: 0.98;
 }
 
+.modal_background {
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 .recipe {
+  z-index: 5;
+
   border: solid 0.25vw white;
   background-color: #3E4C59;
   opacity: 1;

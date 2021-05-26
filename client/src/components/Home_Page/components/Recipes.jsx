@@ -15,7 +15,9 @@ const Recipe = (props) => {
   const [count, setCount] = useState(4);
 
   useEffect(() => {
-    setItems(props.recipeList.slice(0, count));
+    if (props.recipeList.length > 0) {
+      setItems(props.recipeList.slice(0, count));
+    }
   }, [props.recipeList]);
 
   const onClick = (e) => {
@@ -62,9 +64,9 @@ const Recipe = (props) => {
         >
           {items.map((recipe) =>
             <div key={Number(recipe.id)}>
-              <div className='recipesList'>
-                <h2 className='recipesListTitle' onClick={onClick} id={Number(recipe.id)}>{recipe.title}</h2>
-                <img className='recipesListIMG' src={recipe.image} onClick={onClick} id={Number(recipe.id)}></img>
+              <div className='recipesList' onClick={onClick}>
+                <h2 className='recipesListTitle' id={Number(recipe.id)}>{recipe.title}</h2>
+                <img className='recipesListIMG' src={recipe.image} id={Number(recipe.id)}></img>
                 <hr width='85%'></hr>
               </div>
               <br></br>
@@ -75,6 +77,7 @@ const Recipe = (props) => {
       {showdetails ?
         <div className='modal'>
           <div className='recipe'>
+            <base target='_blank'></base>
             <h1 className='recipeTitle'>{recipeinfo.title}</h1>
             <img className='recipeImage' src={recipeinfo.image}/>
             {recipeinfo.summary ?
@@ -95,10 +98,11 @@ const Recipe = (props) => {
             <p className='recipeExtraInfo'>
               Servings: {recipeinfo.servings}<br></br>
               Ready in {recipeinfo.readyInMinutes} Minutes<br></br>
-              Cooking Instructions: <a href={recipeinfo.spoonacularSourceUrl} target='_blank'>{recipeinfo.title}</a><br></br>
+              Cooking Instructions: <a href={recipeinfo.spoonacularSourceUrl}>{recipeinfo.title}</a><br></br>
             </p>
             <a onClick={close} className="close"></a>
           </div>
+          <div className='modal_background' onClick={close}></div>
         </div>
       : null}
     </div>

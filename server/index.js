@@ -12,11 +12,14 @@ app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT;
 const uri = process.env.API_IP_ADDRESS;
 
-const sampleUserId = 1; // CMD + F --> "Fix to add userId later"
-// This needs to go away later later. This is the exact comment text, just search it.
-
+//RECIPES
 app.get('/RecipesByPantry', (req, res) => {
-  axios.get(`${uri}/recipes/pantry?id=1`)
+  var token = req.query.token;
+  axios.get(`${uri}/recipes/pantry`, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  })
     .then((success) => {
       res.send(success.data);
     })
@@ -26,7 +29,12 @@ app.get('/RecipesByPantry', (req, res) => {
 });
 
 app.get('/Recipe/:id', (req, res) => {
-  axios.get(`${uri}/recipes/${req.params.id}`)
+  var token = req.query.token;
+  axios.get(`${uri}/recipes/${req.params.id}`, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  })
     .then((success) => {
       res.send(success.data);
     })
@@ -35,18 +43,47 @@ app.get('/Recipe/:id', (req, res) => {
     });
 });
 
-app.get(`/pantry`, (req, res) => {
-  axios.get(`${uri}/pantry?id=1`)
-    .then(results => {
-      res.send(results.data)
+app.get('/ingredients', (req, res) => {
+  let query = req.query.query;
+  let token = req.query.token;
+  axios.get(`${uri}/ingredients?query=${query}`, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  })
+    .then((success) => {
+      res.send(success.data);
     })
-    .catch(err => {
-      res.send(err)
-    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
-app.delete(`/pantry`, (req, res) => {
-  axios.delete(`${uri}/pantry`, {data: req.body})
+app.get('/filteredRecipes', (req, res) => {
+  let ingredients = req.query.ingredients;
+  let token = req.query.token;
+  axios.get(`${uri}/recipes?ingredients=${ingredients}`, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  })
+    .then((success) => {
+      res.send(success.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
+
+//PANTRY
+app.get(`/pantry`, (req, res) => {
+  var id = req.query.id;
+  var token = req.query.token;
+  axios.get(`${uri}/pantry?id=${id}`, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  })
     .then(results => {
       res.send(results.data)
     })
@@ -56,7 +93,14 @@ app.delete(`/pantry`, (req, res) => {
 });
 
 app.put(`/pantry`, (req, res) => {
-  axios.put(`${uri}/pantry`, req.body)
+  var data = req.body.data;
+  var token = req.body.token;
+  console.log(data, token)
+  axios.put(`${uri}/pantry`, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  }, req.body.data)
   .then(results => {
     res.send(results.data)
   })
@@ -64,6 +108,24 @@ app.put(`/pantry`, (req, res) => {
     res.send(err)
   })
 })
+
+app.delete(`/pantry`, (req, res) => {
+  var data = req.body.data;
+  var token = req.body.token;
+  console.log(req.body, data, token);
+  axios.delete(`${uri}/pantry`, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  }, {data: req.body})
+    .then(results => {
+      res.send(results.data)
+    })
+    .catch(err => {
+      res.send(err)
+    })
+});
+
 
 app.post('/pantry/autocomplete', (req, res) => {
   const { value } = req.body;
@@ -84,8 +146,7 @@ app.post('/pantry/autocomplete', (req, res) => {
 });
 
 app.post('/pantry', (req, res) => {
-  const { itemData, quantity } = req.body; // Fix to add userId later
-  const userId = sampleUserId; // get rid of this later
+  const { itemData, quantity, token } = req.body;
   if (itemData === undefined) {
     res.status(404).send();
     res.end();
@@ -100,9 +161,11 @@ app.post('/pantry', (req, res) => {
       method: 'post',
       url: `${uri}/pantry`,
       data: parse,
+      headers: {
+        'Authorization': `Token ${token}`,
+      }
     })
       .then((response) => {
-        console.log('successful post to pantry');
         res.status(201).send();
         res.end();
       })
@@ -113,28 +176,37 @@ app.post('/pantry', (req, res) => {
   }
 });
 
-app.get('/ingredients', (req, res) => {
-  let query = req.query.query;
-  axios.get(`${uri}/ingredients?query=${query}`)
-    .then((success) => {
-      res.send(success.data);
+//USERS
+app.get('/auth', (req, res) => {
+  axios.get(`${uri}/api/users/current`)
+    .then((response) => {})
+    .catch((err) => {});
+});
+
+app.post('/signup', (req, res) => {
+  const request = { user: req.body };
+  axios.post(`${uri}/api/users/`, request)
+    .then((response) => {
+      console.log(response.data);
+      res.send(response.data);
     })
     .catch((err) => {
-      res.send(err);
+      console.log(err);
     });
 });
 
-app.get('/filteredRecipes', (req, res) => {
-  let ingredients = req.query.ingredients;
-  axios.get(`${uri}/recipes?ingredients=${ingredients}`)
-    .then((success) => {
-      res.send(success.data);
+app.post('/login', (req, res) => {
+  const request = { user: req.body };
+  axios.post(`${uri}/api/users/login`, request)
+    .then((response) => {
+      res.send(response.data);
     })
     .catch((err) => {
-      res.send(err);
+      console.log(err);
     });
 });
 
+//Connection
 app.listen(port, () => {
   /* eslint-disable-next-line no-console */
   console.log(`listening on port ${port}`);
