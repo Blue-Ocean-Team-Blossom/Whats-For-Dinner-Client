@@ -74,7 +74,7 @@ const PantryItem = (props) => {
               <button onClick={() => closeUpdate()}>Cancel</button>
             </div>
           </div>
-        : <h3>{quantity}</h3>
+        : <h3>{quantity} {item.units}</h3>
       }
       <div id='itemButtons'>
         <button onClick={() => {openUpdate()}}>Update Quantity</button>

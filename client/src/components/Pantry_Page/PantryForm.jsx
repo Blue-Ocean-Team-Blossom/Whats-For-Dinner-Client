@@ -4,7 +4,9 @@ import { PantryContext } from '../../state_&_contexts/PantryContext';
 
 const PantryForm = () => {
   const { addToPantry, autocomplete } = useContext(APIContext);
-  const { autocompOpts, itemInput, setItemInput } = useContext(PantryContext);
+  const {
+    autocompOpts, itemInput, setItemInput,
+  } = useContext(PantryContext);
   return (
     <form id="pantryForm" onSubmit={(e) => addToPantry(e)}>
       <label htmlFor="pantryFormItem">
@@ -16,6 +18,7 @@ const PantryForm = () => {
           id="pantryFormItem"
           name="pantryFormItem"
           placeholder="item to add"
+          required
           onChange={(e) => {
             autocomplete(e);
             setItemInput(e.target.value);
@@ -32,7 +35,7 @@ const PantryForm = () => {
       <label htmlFor="pantryFormUnit">
         Unit measurement:
         <br />
-        <input type="text" list="pantryInputSelect2" id="pantryFormUnit" name="pantryFormUnit" placeholder="unit" />
+        <input type="text" list="pantryInputSelect2" id="pantryFormUnit" name="pantryFormUnit" placeholder="unit" required />
         <datalist id="pantryInputSelect2">
           {
             autocompOpts.filter((item) => item.name === itemInput)[0]
@@ -44,7 +47,7 @@ const PantryForm = () => {
       <label htmlFor="pantryFormQuantity">
         Quantity:
         <br />
-        <input type="number" id="pantryFormQuantity" name="pantryFormQuantity" placeholder="greater than zero" step="0.01" min="0.01" />
+        <input type="number" id="pantryFormQuantity" name="pantryFormQuantity" placeholder="greater than zero" step="0.01" min="0.01" required />
       </label>
       <button type="pantryFormSubmit" id="pantryFormSubmit">Submit</button>
     </form>
