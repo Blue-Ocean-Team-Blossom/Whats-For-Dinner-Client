@@ -107,9 +107,7 @@ class FilteredRecipe extends React.Component {
           <button className="btn fill" type="button" onClick={this.handleSearchButton}>Search</button>
           <FilteredList list={this.state.filter} delete={this.deleteFilter}/>
         </div>
-        <div>
           <Recipe className="filteredRecipes" recipeList={this.state.recipes}/>
-        </div>
       </div>
     )
   }

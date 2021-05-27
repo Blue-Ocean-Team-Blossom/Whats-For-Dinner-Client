@@ -11,12 +11,13 @@ h1 {
 }
 
 #app_title {
-  font-size: 1.5vw;
+  margin-left: 0.9vw;
+  font-size: 2vw;
 }
 
 .mainContainer {
   display: grid;
-  grid-template-columns: minmax(200px, 300px) 1fr;
+  grid-template-columns: minmax(10vw, 20vw) 1fr;
 }
 
 .mainSubContainer {
@@ -31,7 +32,7 @@ h1 {
 .navContainer {
   grid-column-start: 1;
   grid-column-end: 1;
-  column-width: 250px;
+  column-width: 10vw;
 
 }
 
@@ -45,15 +46,15 @@ h1 {
 
   position: relative;
   display: block;
-  height: 55px;
-  width: 225px;
-  margin: 10px 7px;
-  padding: 5px 5px;
+  height: 4vw;
+  width: 15vw;
+  margin: 0.6vw 0.4vw;
+  padding: 0.25vw 0.25vw;
   font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 2px;
+  font-size: 1.25vw;
+  letter-spacing: 0.2vw;
   color: white;
-  border-radius: 4px;
+  border-radius: 0.3vw;
   text-transform: uppercase;
   outline: 0;
   overflow:hidden;
@@ -79,16 +80,16 @@ a:visited {
 .login {
   display: grid;
   justify-content: center;
-  margin: 20px;
+  margin: 1vw;
 }
 
 .loginBox {
   display: grid;
   justify-content: center;
   border: #4F5902 solid 0.25vw;
-  border-radius: 5px;
-  width: 400px;
-  padding: 20px;
+  border-radius: 0.35vw;
+  width: 20vw;
+  padding: 1vw;
 }
 
 .input {
@@ -99,7 +100,7 @@ a:visited {
   outline: 0;
   font-size: 1.3rem;
   color: white;
-  padding: 7px 0;
+  padding: 0.5vw 0;
   background: transparent;
   transition: white 0.2s;
 }
@@ -132,5 +133,3 @@ input:-webkit-autofill {
     left: 0
   }
 }
-
-
