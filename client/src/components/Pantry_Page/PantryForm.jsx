@@ -4,7 +4,9 @@ import { PantryContext } from '../../state_&_contexts/PantryContext';
 
 const PantryForm = () => {
   const { addToPantry, autocomplete } = useContext(APIContext);
-  const { autocompOpts, itemInput, setItemInput } = useContext(PantryContext);
+  const {
+    autocompOpts, itemInput, setItemInput,
+  } = useContext(PantryContext);
   return (
     <form id="pantryForm" onSubmit={(e) => addToPantry(e)}>
       <label htmlFor="pantryFormItem">

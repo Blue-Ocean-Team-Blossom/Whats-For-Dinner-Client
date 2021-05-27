@@ -9,7 +9,7 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
-  const { pantry, setPantry } = useContext(PantryContext);
+  const { pantry, setPantry, valid, setValid } = useContext(PantryContext);
   const { autocompOpts, setAutocompOpts } = useContext(PantryContext);
   const { userId, setUserId, token, setToken, username, setUsername } = useContext(UserContext);
   // remember to add useContext for UserContext
@@ -93,7 +93,12 @@ const APIProvider = ({ children }) => {
     e.preventDefault();
     const [ itemTarget, unitTarget, quantityTarget ] = e.target;
     const itemData = autocompOpts[0];
+      if (!itemData) {
+        setValid(false);
+        return;
+      }
     if (itemData.name === itemTarget.value) {
+      setValid(true);
       const pantryAddParse = {
         itemData,
         units: unitTarget.value,
@@ -103,6 +108,8 @@ const APIProvider = ({ children }) => {
       axios.post('/pantry', pantryAddParse)
         .then(() => getPantry(userId))
         .catch((err) => false);
+    } else {
+      setValid(false);
     }
   };
 
