@@ -7,8 +7,7 @@ html, body {
 }
 
 h1 {
-  margin-bottom: 25px;
-
+  margin-bottom: 0.25vw;
 }
 
 #app_title {
