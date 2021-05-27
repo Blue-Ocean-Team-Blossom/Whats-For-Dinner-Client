@@ -9,7 +9,7 @@ export const APIContext = createContext({});
 
 const APIProvider = ({ children }) => {
   const { setRecipe, clickedrecipe, setRecipeinfo } = useContext(RecipeContext);
-  const { pantry, setPantry } = useContext(PantryContext);
+  const { pantry, setPantry, valid, setValid } = useContext(PantryContext);
   const { autocompOpts, setAutocompOpts } = useContext(PantryContext);
   const { userId, setUserId, token, setToken, username, setUsername } = useContext(UserContext);
   // remember to add useContext for UserContext
@@ -91,15 +91,25 @@ const APIProvider = ({ children }) => {
 
   const addToPantry = (e) => {
     e.preventDefault();
-    const quantity = e.target[2].value;
+    const [ itemTarget, unitTarget, quantityTarget ] = e.target;
     const itemData = autocompOpts[0];
-    if (itemData.name === e.target[0].value) {
-      console.log('IAN TEST ON ADDING PANTRY ITEM: ', e.target);
-      console.log('IAN TEST ON ADDING PANTRY ITEM: ', autocompOpts);
-      const pantryAddParse = { itemData, quantity, token };
+      if (!itemData) {
+        setValid(false);
+        return;
+      }
+    if (itemData.name === itemTarget.value) {
+      setValid(true);
+      const pantryAddParse = {
+        itemData,
+        units: unitTarget.value,
+        quantity: quantityTarget.value,
+        token,
+      };
       axios.post('/pantry', pantryAddParse)
         .then(() => getPantry(userId))
         .catch((err) => false);
+    } else {
+      setValid(false);
     }
   };
 
