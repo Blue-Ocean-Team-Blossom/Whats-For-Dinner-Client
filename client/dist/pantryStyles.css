@@ -183,7 +183,12 @@
   #pantryForm {
     margin: 0;
   }
-  #pantryFormUnit {
-    font-size: 50%;
+  #pantryForm label {
+    font-size: 4vw;
+  }
+
+  #pantryForm button {
+    width: 15vw;
+    margin-left: 2vw;
   }
 }

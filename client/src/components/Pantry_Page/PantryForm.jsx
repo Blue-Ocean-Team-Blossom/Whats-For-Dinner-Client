@@ -33,7 +33,7 @@ const PantryForm = () => {
         </datalist>
       </label>
       <label htmlFor="pantryFormUnit">
-        Unit measurement:
+        Unit:
         <br />
         <input type="text" list="pantryInputSelect2" id="pantryFormUnit" name="pantryFormUnit" placeholder="unit" required />
         <datalist id="pantryInputSelect2">

@@ -61,6 +61,7 @@ const PantryItem = (props) => {
     closeUpdate();
   }
 
+  //Add onclick in outermost div to exit update field
   return (
     <div id='pantryItem'>
       <h3>{itemName}</h3>
