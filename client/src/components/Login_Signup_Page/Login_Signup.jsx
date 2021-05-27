@@ -8,7 +8,6 @@ const Login_Signup = (props) => {
   const [onLoginPage, setOnLoginPage] = useState(true);
 
   const switchPage = () => {
-    console.log(onLoginPage);
     setOnLoginPage(!onLoginPage);
   };
 
