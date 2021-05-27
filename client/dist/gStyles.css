@@ -119,6 +119,10 @@ a:visited {
   transition: white 0.2s;
 }
 
+.hide {
+  display: none;
+}
+
 .loginItem {
   display: block;
   display: flex;

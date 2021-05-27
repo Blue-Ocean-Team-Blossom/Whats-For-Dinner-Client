@@ -31,6 +31,7 @@ const APIProvider = ({ children }) => {
       })
       .catch((err) => {
         console.log(err);
+        alert('This user already exists!')
       });
   };
 
@@ -48,6 +49,7 @@ const APIProvider = ({ children }) => {
       })
       .catch((err) => {
         console.log(err);
+        alert('Username or Password is incorrect')
       });
   };
 
@@ -140,7 +142,6 @@ const APIProvider = ({ children }) => {
         setRecipe(success.data);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
@@ -154,7 +155,6 @@ const APIProvider = ({ children }) => {
         setRecipeinfo(success.data);
       })
       .catch((err) => {
-        console.log(err);
       });
   };
 
