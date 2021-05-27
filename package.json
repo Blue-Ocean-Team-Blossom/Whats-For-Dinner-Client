@@ -4,6 +4,7 @@
   "description": "Front-end for Blue Ocean Blossom Team",
   "main": "index.js",
   "scripts": {
+    "start": "forever start server/index.js",
     "test": "jest",
     "test-watch": "jest --watchAll --verbose",
     "test-cov": "jest --verbose --coverage",
