@@ -24,18 +24,21 @@ const PantryList = () => {
   return (
     <div id='pantryList'>
       <h1>Your Current Pantry</h1><br/>
-      <div id='pantryFeed'>
-        <div id='pantryListHeader'>
-          <h2>Item</h2>
-          <h2>Quantity</h2>
-          <h2>Unit</h2>
-        </div>
-        <div id='pantryFeedItems'>
-          {pantryList.map(item =>
-            <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
-          )}
-        </div>
-      </div>
+      {pantryList.length > 0
+        ? <div id='pantryFeed'>
+            <div id='pantryListHeader'>
+              <h2>Item</h2>
+              <h2>Quantity</h2>
+              <h2>Unit</h2>
+            </div>
+            <div id='pantryFeedItems'>
+                {pantryList.map(item =>
+                  <PantryItem key={item.id} item={item} delete={deleteFromPantry}/>
+                )}
+            </div>
+          </div>
+        : <h3>Add an item to your pantry</h3>
+      }
     </div>
   );
 }

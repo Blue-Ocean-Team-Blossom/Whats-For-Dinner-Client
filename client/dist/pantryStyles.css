@@ -125,44 +125,65 @@
 #pantryFormQuantity { grid-area: 1 / 3 / 2 / 4; }
 #pantryFormSubmit { grid-area: 1 / 4 / 2 / 5; }
 
-@media only screen and (max-width: 2200px) {
-  #pantrySection button {
-    font-size: .45vw;
-  }
-}
-
-@media only screen and (max-width: 1400px) {
-  #pantrySection button {
-    font-size: .4vw;
-  }
-}
-
 @media only screen and (max-width: 1200px) {
   #pantrySection button {
-    font-size: .35vw;
+    font-size: .55vw;
+    text-align: center;
+    margin: auto;
+    padding-right: 10%;
+    padding-left: 10%;
   }
-}
-
-@media only screen and (max-width: 700px) {
-  #pantrySection button {
-    font-size: .32vw;
+  #pantryListHeader h2 {
+    font-size: 2vw;
   }
-}
-
-@media only screen and (max-width: 600px) {
-  #pantrySection button {
-    font-size: .30vw;
+  #pantryItem h3 {
+    font-size: 1.5vw;
   }
 }
 
 @media only screen and (max-width: 500px) {
   #pantrySection button {
-    font-size: .225vw;
+    font-size: .5vw;
+    text-align: center;
+    margin: auto;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+  #pantryListHeader h2 {
+    font-size: 2vw;
+  }
+  #pantryItem h3 {
+    font-size: 1.5vw;
   }
 }
 
-@media only screen and (max-width: 300px) {
+@media only screen and (max-width: 400px) {
+  #pantryTitle {
+    font-size: 9vw;
+  }
+  #pantryList {
+    width: 105%;
+  }
+  #pantryList h1 {
+    font-size: 5vw;
+  }
   #pantrySection button {
-    font-size: .2vw;
+    font-size: .45vw;
+    text-align: center;
+    margin: auto;
+    padding-right: 10%;
+    padding-left: 10%;
+  }
+  #pantryListHeader h2 {
+    font-size: 2vw;
+  }
+  #pantryItem h3 {
+    font-size: 1.5vw;
+  }
+  #pantryForm {
+    margin: 0;
+  }
+  #pantryFormUnit {
+    font-size: 3vw;
   }
 }

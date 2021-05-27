@@ -50,6 +50,21 @@ const Recipe = (props) => {
         <h1 className='recipes'>Suggested Recipe List</h1>
       : <h1 className='recipes'>Filtered Recipe List</h1>}
       <br></br>
+
+      {props.recipeList.length === 0 ?
+        showpantryrecipes ?
+          <div className='no_recipes_text'>
+            No Recipes Found...
+            <br></br>
+            Add ingredients to pantry
+          </div>
+        : <div className='no_recipes_text'>
+            No Recipes Found...
+            <br></br>
+            Add ingredients to search
+          </div>
+      : null}
+
       <div id='recipesContainer'>
         <InfiniteScroll
           dataLength={items.length}

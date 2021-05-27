@@ -24,7 +24,7 @@ const Login_Signup = (props) => {
               <input className='input' type='text' id="username" name="username" placeholder='username' required />
             </label>
             <label className='loginItem' htmlFor="password">
-              <input className='input' type='text' id="password" name="password" placeholder='password' required />
+              <input className='input' type='password' id="password" name="password" placeholder='password' required />
             </label>
             <button className='btn fill' type="submit">Log In</button>
           </form>
@@ -39,7 +39,7 @@ const Login_Signup = (props) => {
               <input className='input' type='text' id="username" name="username" placeholder='username' required />
             </label>
             <label className='loginItem' htmlFor="password">
-              <input className='input' type='text' id="password" name="password" placeholder='password' required />
+              <input className='input' type='password' id="password" name="password" placeholder='password' required />
             </label>
             <button className='btn fill' type="submit">Sign Up</button>
           </form>

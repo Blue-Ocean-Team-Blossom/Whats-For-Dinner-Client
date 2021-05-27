@@ -21,9 +21,21 @@
  padding: 0 1vw;
 }
 
-.ingredient:hover{
+.ingredientList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  height: 30vh;
+}
+
+.ingredient:hover {
   color: red;
   cursor: pointer;
+}
+
+.ingredient:active {
+  transform: scale(0.90);
 }
 
 .filteredContainer {
@@ -47,13 +59,21 @@
 }
 
 .filterIngredientList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
   height: 28vh;
-  overflow-y: auto;
+  overflow-y: scroll;
 }
 
-.filterIngredient:hover{
+.filterIngredient:hover {
   color: red;
   cursor: pointer;
+}
+
+.filterIngredient:active {
+  transform: scale(0.90);
 }
 
 .filterclose {
@@ -76,8 +96,4 @@
 }
 .filterclose:after {
   transform: rotate(-45deg);
-}
-
-.top-half {
-  height: 36vh;
 }

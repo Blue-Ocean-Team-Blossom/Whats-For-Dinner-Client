@@ -3,6 +3,11 @@
   font-size: 3vw;
 }
 
+.no_recipes_text {
+  text-align: center;
+  font-size: 1.5vw;
+}
+
 #recipesContainer {
   height: 70vh;
   overflow-y: auto;
