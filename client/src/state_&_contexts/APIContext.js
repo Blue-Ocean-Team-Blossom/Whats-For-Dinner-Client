@@ -60,10 +60,10 @@ const APIProvider = ({ children }) => {
 
   const deleteFromPantry = async (id, userId) => {
     const deleteData = {
-      data: {id: id},
+      deletion: {id: id},
       token: token
     }
-    axios.delete(`/pantry`, deleteData)
+    axios.delete(`/pantry`, {data: deleteData})
       .then(() => {
         getPantry(userId);
       })
@@ -74,7 +74,7 @@ const APIProvider = ({ children }) => {
 
   const updateItem = async (id, userId, quantity) => {
     const updateData = {
-      data: {
+      update: {
         pantryId: id,
         quantity: quantity
       },
