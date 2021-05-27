@@ -92,32 +92,16 @@ app.get(`/pantry`, (req, res) => {
     })
 });
 
-app.put(`/pantry`, (req, res) => {
-  var data = req.body.data;
-  var token = req.body.token;
-  console.log(data, token)
-  axios.put(`${uri}/pantry`, {
-    headers: {
-      'Authorization': `Token ${token}`
-    }
-  }, req.body.data)
-  .then(results => {
-    res.send(results.data)
-  })
-  .catch(err => {
-    res.send(err)
-  })
-})
-
 app.delete(`/pantry`, (req, res) => {
-  var data = req.body.data;
+  var data = req.body.deletion;
   var token = req.body.token;
   console.log(req.body, data, token);
   axios.delete(`${uri}/pantry`, {
+    data: data,
     headers: {
       'Authorization': `Token ${token}`
     }
-  }, {data: req.body})
+  })
     .then(results => {
       res.send(results.data)
     })
@@ -126,6 +110,22 @@ app.delete(`/pantry`, (req, res) => {
     })
 });
 
+app.put(`/pantry`, (req, res) => {
+  var data = req.body.update;
+  var token = req.body.token;
+  console.log(data, token)
+  axios.put(`${uri}/pantry`, data, {
+    headers: {
+      'Authorization': `Token ${token}`
+    }
+  })
+  .then(results => {
+    res.send(results.data)
+  })
+  .catch(err => {
+    res.send(err)
+  })
+})
 
 app.post('/pantry/autocomplete', (req, res) => {
   const { value } = req.body;
