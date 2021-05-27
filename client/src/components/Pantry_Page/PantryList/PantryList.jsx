@@ -23,11 +23,12 @@ const PantryList = () => {
 
   return (
     <div id='pantryList'>
-      <h1>Your Current Pantry</h1>
+      <h1>Your Current Pantry</h1><br/>
       <div id='pantryFeed'>
         <div id='pantryListHeader'>
           <h2>Item</h2>
           <h2>Quantity</h2>
+          <h2>Unit</h2>
         </div>
         <div id='pantryFeedItems'>
           {pantryList.map(item =>
@@ -40,3 +41,4 @@ const PantryList = () => {
 }
 
 export default PantryList;
+

@@ -15,10 +15,10 @@ const Login_Signup = (props) => {
     <div className='login'>
       {onLoginPage
        ? <div className='loginBox'>
-          <button className='btn fill' type="button" onClick={() => {switchPage()}}>
+          <button className='btn switch_login_signup' type="button" onClick={() => {switchPage()}}>
             New User? Sign Up Here!
           </button>
-          <h4>Login</h4>
+          <h3>Login</h3>
           <form onSubmit={(e) => {userLogin(e); setTimeout(() => {props.changeView('pantryList')}, 500)}}>
             <label className='loginItem' htmlFor="username">
               <input className='input' type='text' id="username" name="username" placeholder='username' required />
@@ -30,10 +30,10 @@ const Login_Signup = (props) => {
           </form>
         </div>
       : <div className='loginBox'>
-          <button className='btn fill' type="button" onClick={() => switchPage()}>
+          <button className='btn switch_login_signup' type="button" onClick={() => switchPage()}>
             Have an account? Log In Here!
           </button>
-          <h4>Sign Up</h4>
+          <h3>Sign Up</h3>
           <form onSubmit={(e) => {createUser(e); setTimeout(() => {props.changeView('pantryList')}, 500)}}>
             <label className='loginItem' htmlFor="username">
               <input className='input' type='text' id="username" name="username" placeholder='username' required />

@@ -30,7 +30,8 @@
   display: grid;
   flex-direction: column;
   justify-content: flex-start;
-  grid-template-columns: 35% 15% 50%;
+  grid-template-columns: 65% 35%;
+  column-gap: 2rem;
 }
 
 .filter-button {
@@ -45,13 +46,17 @@
   padding-top: 10px;
 }
 
+.filterIngredientList {
+  height: 28vh;
+  overflow-y: auto;
+}
+
 .filterIngredient:hover{
   color: red;
   cursor: pointer;
 }
 
 .filterclose {
-  float: right;
   width: 1vw;
   height: 1vw;
   opacity: 0.7;
@@ -61,7 +66,6 @@
   cursor: pointer;
 }
 .filterclose:before, .filterclose:after {
-  float: right;
   content: ' ';
   height: 1.05vw;
   width: 0.052vw;
@@ -72,4 +76,8 @@
 }
 .filterclose:after {
   transform: rotate(-45deg);
+}
+
+.top-half {
+  height: 36vh;
 }
