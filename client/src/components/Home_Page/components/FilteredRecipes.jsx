@@ -44,10 +44,12 @@ class FilteredRecipe extends React.Component {
   }
 
   addIngredient (e) {
-    this.state.filter.push(e.target.innerText);
-    this.setState({
-      filter: this.state.filter
-    })
+    if(!this.state.filter.includes(e.target.innerText)) {
+      this.state.filter.push(e.target.innerText);
+      this.setState({
+        filter: this.state.filter
+      })
+    }
   }
 
   deleteFilter (index) {
@@ -59,20 +61,36 @@ class FilteredRecipe extends React.Component {
 
   handleSearchButton (e) {
     e.preventDefault();
-    var ingredients = this.state.filter.join(',');
-    // axios.get(`/pantry?token=${this.props.token}`)
-    //   .then((success) => {
-    //     success.data
-    //   })
-
-    axios.get(`/filteredRecipes?ingredients=${ingredients}&token=${this.props.token}`)
+    var ingredients = this.state.filter.slice();
+    axios.get(`/pantry?token=${this.props.token}`)
       .then((success) => {
-        this.setState({
-          recipes: success.data
-        })
+        success.data
+        for(var i = 0; i< success.data.length; i++) {
+          ingredients.push(success.data[i].ingredient);
+        }
+        ingredients = ingredients.join(',');
+        axios.get(`/filteredRecipes?ingredients=${ingredients}&token=${this.props.token}`)
+          .then((success) => {
+            this.setState({
+              recipes: success.data
+            })
+          })
+          .catch((err) => {
+            console.log(err);
+          })
       })
-      .catch((err) => {
+      .catch((err)=> {
         console.log(err);
+        ingredients = ingredients.join(',');
+        axios.get(`/filteredRecipes?ingredients=${ingredients}&token=${this.props.token}`)
+          .then((success) => {
+            this.setState({
+              recipes: success.data
+            })
+          })
+          .catch((err) => {
+            console.log(err);
+          })
       })
   }
 
@@ -86,7 +104,7 @@ class FilteredRecipe extends React.Component {
         </div>
         <div className="filter-list">
           <div className="filter">FILTER</div>
-          <button className="btn" type="button" onClick={this.handleSearchButton}>Search</button>
+          <button className="btn fill" type="button" onClick={this.handleSearchButton}>Search</button>
           <FilteredList list={this.state.filter} delete={this.deleteFilter}/>
         </div>
         <div>
