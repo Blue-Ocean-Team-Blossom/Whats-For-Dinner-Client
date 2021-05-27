@@ -143,7 +143,6 @@ app.post('/pantry/autocomplete', (req, res) => {
     })
     .catch((err) => {
       res.status(500).send();
-      console.log(`unable to get autocomplete ingredients, ${err}`);
     });
 });
 
@@ -174,7 +173,6 @@ app.post('/pantry', (req, res) => {
       })
       .catch((err) => {
         res.status(404).send();
-        console.log(`error posting to pantry, ${err}`);
       });
   }
 });
@@ -193,7 +191,7 @@ app.post('/signup', (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      res.send(err)
     });
 });
 
@@ -204,7 +202,7 @@ app.post('/login', (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      res.send(err)
     });
 });
 
