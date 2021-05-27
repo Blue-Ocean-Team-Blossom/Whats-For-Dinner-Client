@@ -5,7 +5,10 @@ import Nav from './components/Home_Page/navigation'
 import Home from './components/Home_Page/index'
 import Login from './components/Login_Signup_Page/Login_Signup'
 
+
+
 const App = () => {
+
 
   //default view to recipeList
   //let view = 'recipeList';
@@ -20,6 +23,7 @@ const App = () => {
   const changeView = (updateView) => {
     setView(updateView)
   }
+
 
 
   //render function to conditionally render components
@@ -39,7 +43,7 @@ const App = () => {
     } else if (view === 'login') {
       return (
         <div>
-          <Login />
+          <Login changeView={changeView}/>
         </div>
       )
     }
