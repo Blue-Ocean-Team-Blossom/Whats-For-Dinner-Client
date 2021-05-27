@@ -49,7 +49,7 @@ const App = () => {
   return (
     <div>
       <h1 id='app_title'>What's for Dinner?</h1>
-      <hr></hr>
+      <hr color='#4F5902'></hr>
       <div className='mainContainer'>
       <div className='navContainer'>
         <Nav changeView={changeView} homeView={view}/>

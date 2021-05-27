@@ -9,29 +9,29 @@
 }
 
 #recipesContainer::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 0.75vw rgba(0,0,0,0.3);
-  -webkit-box-shadow: inset 0 0 0.4vw rgba(0,0,0,0.3);
-  background-color: #F5F5F5;
+  box-shadow: inset 0 0 0.75vw #1c1c1c;
+  -webkit-box-shadow: inset 0 0 0.4vw #1c1c1c;
+  background-color: #1c1c1c;
   border-radius: 0.75vw;
 }
 
 #recipesContainer::-webkit-scrollbar {
   width: 0.75vw;
   border-radius: 0.75vw;
-  background-color: #F5F5F5;
+  background-color: #1c1c1c;
 }
 
 #recipesContainer::-webkit-scrollbar-thumb {
-  border: solid 0.02vw black;
-  background-color: lightgoldenrodyellow;
+  border: solid 0.02vw #4F5902;
+  background-color: #4F5902;
   border-radius: 0.75vw;
 }
 
 .recipesList {
   margin: auto;
   width: 30%;
-  background: linear-gradient(to top, #616E7C 50%, #3E4C59 50%);
-  border: solid 0.25vw white;
+  background: linear-gradient(to top, #3A5C3C 50%, #3A5C3C 50%);
+  border: solid 0.25vw #4F5902;
   background-size: 100% 200%;
   background-position: top left;
   transition: all .2s ease-out;
@@ -44,7 +44,12 @@
 
 .recipesList:hover {
   cursor: pointer;
+  transform: scale(1.05);
   background-position: bottom left;
+}
+
+.recipesList:active {
+  transform: scale(.9);
 }
 
 .recipesListTitle {

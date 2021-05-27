@@ -1,8 +1,9 @@
 html, body {
-  background-image: linear-gradient(to bottom right, #1F2933, #323F4B);
+  /* background-image: linear-gradient(to bottom right, #1F2933, #323F4B); */
+  background-color: #1c1c1c;
   height: 100%;
   font-family: 'Lato', sans-serif;
-  color: #F5F7FA;
+  color: white;
   overflow: hidden;
 }
 
@@ -37,6 +38,40 @@ h1 {
 }
 
 .btn {
+  background: linear-gradient(to top, grey 50%, #0D0D0D 50%);
+
+  border: solid 0.25vw #4F5902;
+  background-size: 100% 200%;
+  background-position: top left;
+  transition: all .2s ease-out;
+
+  position: relative;
+  display: block;
+  height: 55px;
+  width: 225px;
+  margin: 10px 7px;
+  padding: 5px 5px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: white;
+  border-radius: 4px;
+  text-transform: uppercase;
+  outline: 0;
+  overflow:hidden;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-position: bottom left;
+}
+
+.btn:active {
+  transform: scale(0.90);
+}
+
+
+/* .btn {
   position: relative;
   display: block;
   height: 55px;
@@ -63,13 +98,13 @@ h1 {
 }
 
 .fill:hover {
-  color: whitesmoke;
+  color: black;
 }
 
 .fill:before {
   content: "";
   position: absolute;
-  background: #616E7C;
+  background: black;
   bottom: 0;
   left: 0;
   right: 0;
@@ -81,7 +116,8 @@ h1 {
 
 .fill:hover:before {
   top: 0;
-}
+  background-color: black;
+} */
 
 a:link {
   color: lightblue;
