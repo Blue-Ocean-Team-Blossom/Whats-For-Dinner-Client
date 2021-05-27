@@ -9,6 +9,7 @@ import Login from './components/Login_Signup_Page/Login_Signup'
 
 const App = () => {
 
+
   //default view to recipeList
   //let view = 'recipeList';
   const [view, setView] = useState('recipeList')
@@ -22,6 +23,7 @@ const App = () => {
   const changeView = (updateView) => {
     setView(updateView)
   }
+
 
 
   //render function to conditionally render components
@@ -41,7 +43,7 @@ const App = () => {
     } else if (view === 'login') {
       return (
         <div>
-          <Login />
+          <Login changeView={changeView}/>
         </div>
       )
     }
