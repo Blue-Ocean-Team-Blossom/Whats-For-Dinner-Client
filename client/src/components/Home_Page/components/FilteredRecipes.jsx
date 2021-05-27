@@ -61,20 +61,36 @@ class FilteredRecipe extends React.Component {
 
   handleSearchButton (e) {
     e.preventDefault();
-    var ingredients = this.state.filter.join(',');
-    // axios.get(`/pantry?token=${this.props.token}`)
-    //   .then((success) => {
-    //     success.data
-    //   })
-
-    axios.get(`/filteredRecipes?ingredients=${ingredients}&token=${this.props.token}`)
+    var ingredients = this.state.filter.slice();
+    axios.get(`/pantry?token=${this.props.token}`)
       .then((success) => {
-        this.setState({
-          recipes: success.data
-        })
+        success.data
+        for(var i = 0; i< success.data.length; i++) {
+          ingredients.push(success.data[i].ingredient);
+        }
+        ingredients = ingredients.join(',');
+        axios.get(`/filteredRecipes?ingredients=${ingredients}&token=${this.props.token}`)
+          .then((success) => {
+            this.setState({
+              recipes: success.data
+            })
+          })
+          .catch((err) => {
+            console.log(err);
+          })
       })
-      .catch((err) => {
+      .catch((err)=> {
         console.log(err);
+        ingredients = ingredients.join(',');
+        axios.get(`/filteredRecipes?ingredients=${ingredients}&token=${this.props.token}`)
+          .then((success) => {
+            this.setState({
+              recipes: success.data
+            })
+          })
+          .catch((err) => {
+            console.log(err);
+          })
       })
   }
 

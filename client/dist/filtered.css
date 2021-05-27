@@ -26,6 +26,7 @@
 
 .ingredient:hover{
   color: red;
+  cursor: pointer;
 }
 
 .filteredContainer {
@@ -49,28 +50,29 @@
 
 .filterIngredient:hover{
   color: red;
+  cursor: pointer;
 }
 
-#mdiv {
-  width: 10px;
-  height: 10px;
-  background-color: #1F2933;
+.filterclose {
   float: right;
+  width: 1vw;
+  height: 1vw;
+  opacity: 0.7;
 }
-
-.mdiv {
-  height: 10px;
-  width: 1px;
-  margin-left: 6px;
+.filterclose:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.filterclose:before, .filterclose:after {
+  float: right;
+  content: ' ';
+  height: 1.05vw;
+  width: 0.052vw;
   background-color: white;
+}
+.filterclose:before {
   transform: rotate(45deg);
-  Z-index: 1;
 }
-
-.md {
-  height: 10px;
-  width: 1px;
-  background-color: white;
-  transform: rotate(90deg);
-  Z-index: 2;
+.filterclose:after {
+  transform: rotate(-45deg);
 }
