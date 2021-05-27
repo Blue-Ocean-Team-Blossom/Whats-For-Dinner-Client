@@ -115,7 +115,6 @@ app.put(`/pantry`, (req, res) => {
 app.delete(`/pantry`, (req, res) => {
   var data = req.body.data;
   var token = req.body.token;
-  console.log(req.body, data, token);
   axios.delete(`${uri}/pantry`, {
     headers: {
       'Authorization': `Token ${token}`
@@ -136,8 +135,8 @@ app.post('/pantry/autocomplete', (req, res) => {
     .then((ingredients) => {
       const { data } = ingredients;
       const parse = data.map((ingredient) => {
-        const { name, id } = ingredient;
-        const singleParse = { name, id };
+        const { name, id, possibleUnits} = ingredient;
+        const singleParse = { name, id, possibleUnits};
         return singleParse;
       });
       res.status(200).send(parse);
@@ -149,7 +148,7 @@ app.post('/pantry/autocomplete', (req, res) => {
 });
 
 app.post('/pantry', (req, res) => {
-  const { itemData, quantity, token } = req.body;
+  const { itemData, quantity, token, units } = req.body;
   if (itemData === undefined) {
     res.status(404).send();
     res.end();
@@ -159,6 +158,7 @@ app.post('/pantry', (req, res) => {
       ingredient: name,
       ingredientId: id,
       quantity: Number(quantity),
+      units,
     };
     axios({
       method: 'post',
@@ -190,7 +190,6 @@ app.post('/signup', (req, res) => {
   const request = { user: req.body };
   axios.post(`${uri}/api/users/`, request)
     .then((response) => {
-      console.log(response.data);
       res.send(response.data);
     })
     .catch((err) => {

@@ -91,12 +91,15 @@ const APIProvider = ({ children }) => {
 
   const addToPantry = (e) => {
     e.preventDefault();
-    const quantity = e.target[2].value;
+    const [ itemTarget, unitTarget, quantityTarget ] = e.target;
     const itemData = autocompOpts[0];
-    if (itemData.name === e.target[0].value) {
-      console.log('IAN TEST ON ADDING PANTRY ITEM: ', e.target);
-      console.log('IAN TEST ON ADDING PANTRY ITEM: ', autocompOpts);
-      const pantryAddParse = { itemData, quantity, token };
+    if (itemData.name === itemTarget.value) {
+      const pantryAddParse = {
+        itemData,
+        units: unitTarget.value,
+        quantity: quantityTarget.value,
+        token,
+      };
       axios.post('/pantry', pantryAddParse)
         .then(() => getPantry(userId))
         .catch((err) => false);

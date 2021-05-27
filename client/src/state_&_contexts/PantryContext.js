@@ -1,12 +1,12 @@
-/* eslint-disable */
 import React, { createContext, useContext, useState } from 'react';
 
-import sampleData from './sampleData/samplePantry.js';
+import sampleData from './sampleData/samplePantry';
 
 export const PantryContext = createContext({});
 
 const PantryProvider = ({ children }) => {
   const [autocompOpts, setAutocompOpts] = useState([]);
+  const [itemInput, setItemInput] = useState('');
   const [pantry, setPantry] = useState([]);
   const [valid, setValid] = useState(true);
 
@@ -17,6 +17,10 @@ const PantryProvider = ({ children }) => {
         setPantry,
         autocompOpts,
         setAutocompOpts,
+        itemInput,
+        setItemInput,
+        valid,
+        setValid,
       }}
     >
       {children}
