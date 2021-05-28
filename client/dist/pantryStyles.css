@@ -204,14 +204,22 @@
     font-size: 1.5vw;
   }
   #pantryForm {
-    margin: 0;
+    margin-left: 9%;
   }
   #pantryForm label {
     font-size: 4vw;
   }
-
   #pantryForm button {
-    width: 15vw;
+    width: 17vw;
+    height: 6.5vh;
     margin-left: 2vw;
+    font-size: 2vw;
+  }
+  #pantryForm input {
+    height: 3vh;
+    font-size: 2vw;
+  }
+  #pantryForm #pantryFormQuantity input {
+    font-size: 0.5vw;
   }
 }
