@@ -3,10 +3,8 @@ import React, { useEffect, useContext, useState } from 'react';
 import PantryForm from './PantryForm';
 import PantryList from './PantryList/PantryList';
 
-
-import { PantryContext } from '../../state_&_contexts/PantryContext';
 import { UserContext } from '../../state_&_contexts/UserContext';
-
+import { PantryContext } from '../../state_&_contexts/PantryContext';
 // import { APIContext } from '../../state_&_contexts/APIContext';
 
 const Pantry = () => {
@@ -21,7 +19,7 @@ const Pantry = () => {
   // }, []);
 
   return (
-    <div id='pantrySection'>
+    <div className='pantrySection'>
       <br></br>
       <h1 id='pantryTitle'>{user}Pantry List</h1>
       <br></br>
