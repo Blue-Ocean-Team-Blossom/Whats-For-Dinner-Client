@@ -49,7 +49,7 @@ const PantryForm = () => {
         <br />
         <input type="number" id="pantryFormQuantity" name="pantryFormQuantity" placeholder="greater than zero" step="0.01" min="0.01" required />
       </label>
-      <button type="pantryFormSubmit" id="pantryFormSubmit">Submit</button>
+      <button type="submit" id="pantryFormSubmit">Submit</button>
     </form>
   );
 };

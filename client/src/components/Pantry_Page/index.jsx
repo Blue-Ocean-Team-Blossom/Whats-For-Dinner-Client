@@ -19,7 +19,7 @@ const Pantry = () => {
   // }, []);
 
   return (
-    <div id='pantrySection'>
+    <div className='pantrySection'>
       <br></br>
       <h1 id='pantryTitle'>{user}Pantry List</h1>
       <br></br>
