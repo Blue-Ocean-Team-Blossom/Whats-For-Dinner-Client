@@ -2,11 +2,9 @@
  transform: translate(-5%, -10%);
  width: 75%;
  background: #2f3640;
- height: 40px;
+ height: 6vh;
  border-radius: 40px;
- padding-top: 10px;
- width: 240px;
- padding: 0 6px;
+ width: 20vw;
 }
 
 .search-txt {
@@ -15,25 +13,37 @@
  outline: none;
  padding: 0;
  color: white;
- font-size: 16px;
+ font-size: 1vw;
  transition: 0.4s;
- line-height: 40px;
- width: 0px;
+ line-height: 6vh;
  font-weight: bold;
- width: 240px;
- padding: 0 6px;
+ width: 20vw;
+ padding: 0 1vw;
 }
 
-.ingredient:hover{
+.ingredientList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  height: 30vh;
+}
+
+.ingredient:hover {
   color: red;
   cursor: pointer;
+}
+
+.ingredient:active {
+  transform: scale(0.90);
 }
 
 .filteredContainer {
   display: grid;
   flex-direction: column;
   justify-content: flex-start;
-  grid-template-columns: 35% 15% 50%;
+  grid-template-columns: 65% 35%;
+  column-gap: 2rem;
 }
 
 .filter-button {
@@ -48,13 +58,25 @@
   padding-top: 10px;
 }
 
-.filterIngredient:hover{
+.filterIngredientList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  height: 28vh;
+  overflow-y: scroll;
+}
+
+.filterIngredient:hover {
   color: red;
   cursor: pointer;
 }
 
+.filterIngredient:active {
+  transform: scale(0.90);
+}
+
 .filterclose {
-  float: right;
   width: 1vw;
   height: 1vw;
   opacity: 0.7;
@@ -64,7 +86,6 @@
   cursor: pointer;
 }
 .filterclose:before, .filterclose:after {
-  float: right;
   content: ' ';
   height: 1.05vw;
   width: 0.052vw;

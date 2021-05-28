@@ -23,7 +23,7 @@ const Login_Signup = (props) => {
     <div className='login'>
       {onLoginPage
        ? <div className='loginBox'>
-          <button className='btn fill' type="button" onClick={() => {switchPage()}}>
+          <button className='btn switch_login_signup' type="button" onClick={() => {switchPage()}}>
             New User? Sign Up Here!
           </button>
           <h4>Login</h4>
@@ -38,7 +38,7 @@ const Login_Signup = (props) => {
           </form>
         </div>
       : <div className='loginBox'>
-          <button className='btn fill' type="button" onClick={() => switchPage()}>
+          <button className='btn switch_login_signup' type="button" onClick={() => switchPage()}>
             Have an account? Log In Here!
           </button>
           <h4>Sign Up</h4>

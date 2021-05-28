@@ -98,17 +98,19 @@ class FilteredRecipe extends React.Component {
   render() {
     return (
       <div className="filteredContainer">
-        <div className ='search-bar'>
-          <SearchBar change={this.handleSearchChange}/>
-          <IngredientsList list={this.state.ingredients} add={this.addIngredient}/>
+        <div>
+          <Recipe className="filteredRecipes" recipeList={this.state.recipes}/>
         </div>
         <div className="filter-list">
+          <div className="top-half">
+            <SearchBar className="search-bar" change={this.handleSearchChange}/>
+            <IngredientsList list={this.state.ingredients} add={this.addIngredient}/>
+          </div>
+          <hr width={'68%'} align={'left'} color='#4F5902'></hr>
+          <br></br>
           <div className="filter">FILTER</div>
           <button className="btn fill" type="button" onClick={this.handleSearchButton}>Search</button>
           <FilteredList list={this.state.filter} delete={this.deleteFilter}/>
-        </div>
-        <div>
-          <Recipe className="filteredRecipes" recipeList={this.state.recipes}/>
         </div>
       </div>
     )

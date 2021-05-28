@@ -61,6 +61,7 @@ const PantryItem = (props) => {
     closeUpdate();
   }
 
+  //Add onclick in outermost div to exit update field
   return (
     <div id='pantryItem'>
       <h3>{itemName}</h3>
@@ -76,6 +77,7 @@ const PantryItem = (props) => {
           </div>
         : <h3>{quantity} {item.units}</h3>
       }
+      <h3>{item.units}</h3>
       <div id='itemButtons'>
         <button onClick={() => {openUpdate()}}>Update Quantity</button>
         <button onClick={() => {deleteFunc(item.id, userId)}}>Delete Item</button>
