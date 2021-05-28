@@ -13,20 +13,20 @@
   overflow-y: auto;
 }
 
-#recipesContainer::-webkit-scrollbar-track {
+#recipesContainer::-webkit-scrollbar-track, .modal::-webkit-scrollbar-track {
   box-shadow: inset 0 0 0.75vw #1c1c1c;
   -webkit-box-shadow: inset 0 0 0.4vw #1c1c1c;
   background-color: #1c1c1c;
   border-radius: 0.75vw;
 }
 
-#recipesContainer::-webkit-scrollbar {
+#recipesContainer::-webkit-scrollbar, .modal::-webkit-scrollbar {
   width: 0.75vw;
   border-radius: 0.75vw;
   background-color: #1c1c1c;
 }
 
-#recipesContainer::-webkit-scrollbar-thumb {
+#recipesContainer::-webkit-scrollbar-thumb, .modal::-webkit-scrollbar-thumb {
   border: solid 0.02vw #4F5902;
   background-color: #4F5902;
   border-radius: 0.75vw;
