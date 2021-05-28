@@ -12,7 +12,7 @@ const App = () => {
 
   //default view to recipeList
   //let view = 'recipeList';
-  const [view, setView] = useState('recipeList')
+  const [view, setView] = useState('login')
 
   //update the view to render
   useEffect(() => {

@@ -114,6 +114,10 @@ input:-webkit-autofill {
   transition: background-color 10000s;
 }
 
+.hide {
+  display: none;
+}
+
 .loginItem {
   display: block;
   display: flex;
