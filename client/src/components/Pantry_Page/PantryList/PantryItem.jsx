@@ -71,8 +71,8 @@ const PantryItem = (props) => {
             <div>
               <button onClick={() => add(item.id, userId, $('#updateQuantity').val(), quantity)}> + </button>
               <button onClick={() => subtract(item.id, userId, $('#updateQuantity').val(), quantity)}> - </button>
-              <button onClick={() => update(item.id, userId, $('#updateQuantity').val())}>Update</button>
-              <button onClick={() => closeUpdate()}>Cancel</button>
+              <button onClick={() => update(item.id, userId, $('#updateQuantity').val())}>Update/Cancel</button>
+              {/* <button onClick={() => closeUpdate()}>Cancel</button> */}
             </div>
           </div>
         : <h3>{quantity} {item.units}</h3>
