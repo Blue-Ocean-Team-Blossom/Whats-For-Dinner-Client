@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import { Select } from 'react-select';
 import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import IngredientsList from './IngredientsList.jsx';
@@ -94,7 +93,6 @@ class FilteredRecipe extends React.Component {
       })
   }
 
-
   render() {
     return (
       <div className="filteredContainer">
@@ -116,8 +114,6 @@ class FilteredRecipe extends React.Component {
     )
   }
 }
-
-
 
 export default FilteredRecipe;
 

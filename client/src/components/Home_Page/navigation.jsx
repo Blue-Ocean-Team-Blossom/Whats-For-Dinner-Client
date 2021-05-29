@@ -13,8 +13,6 @@ const Nav = (props) => {
     setShowpantryrecipes(boolean);
   }
 
-
-
   return (
     <div>
       <br></br>

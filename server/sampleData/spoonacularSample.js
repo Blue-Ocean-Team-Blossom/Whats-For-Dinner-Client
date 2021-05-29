@@ -1,8 +1,3 @@
-// sample data keys to require:
-//   getRecipesByIngredients
-//   autocompleteIngredient
-// var { getRecipesByIngredients, autocompleteIngredient } = require('');
-
 module.exports = {
   autocompleteIngredient: [
     {

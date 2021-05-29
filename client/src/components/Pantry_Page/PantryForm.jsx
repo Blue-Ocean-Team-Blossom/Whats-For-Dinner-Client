@@ -40,7 +40,7 @@ const PantryForm = () => {
           {
             autocompOpts.filter((item) => item.name === itemInput)[0]
             && autocompOpts.filter((item) => item.name === itemInput)[0].possibleUnits
-              .map((unit) => <option>{unit}</option>)
+              .map((unit, idx) => <option key={`${unit} ${idx}`}>{unit}</option>)
           }
         </datalist>
       </label>

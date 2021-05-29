@@ -8,9 +8,7 @@ const SearchBar = (props) => (
   <i className="fas fa-search"></i>
     </a>
   </div>
-
 )
-
 
 export default SearchBar;
 

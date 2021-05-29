@@ -115,7 +115,6 @@ app.delete(`/pantry`, (req, res) => {
 app.put(`/pantry`, (req, res) => {
   var data = req.body.update;
   var token = req.body.token;
-  console.log(data, token)
   axios.put(`${uri}/pantry`, data, {
     headers: {
       'Authorization': `Token ${token}`

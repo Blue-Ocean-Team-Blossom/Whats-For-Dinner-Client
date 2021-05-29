@@ -15,7 +15,7 @@ describe('Pantry Form', () => {
     const wrapper = mount(<Test />);
     expect(wrapper.find(PantryForm)).toHaveLength(1);
     expect(wrapper.find(PantryList)).toHaveLength(1);
-    expect(wrapper.find('#pantrySection')).toHaveLength(1);
+    expect(wrapper.find('.pantrySection')).toHaveLength(1);
     expect(wrapper.find('#pantryTitle')).toHaveLength(1);
   });
 });
