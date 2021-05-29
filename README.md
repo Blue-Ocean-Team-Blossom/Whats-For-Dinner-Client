@@ -20,13 +20,13 @@ https://github.com/Blue-Ocean-Team-Blossom/Whats-For-Dinner-API
 ## Authors:
 
 Jeff Heuton,
-Andrew Vo,
 Daniel Suh,
 Jason Tseng,
 Daniel Tseng,
+Ian Ferrier,
+Andrew Vo,
 Zad Castaneda,
-Peter Kwak,
-Ian Ferrier
+Peter Kwak
 
 ## Running this Application:
 

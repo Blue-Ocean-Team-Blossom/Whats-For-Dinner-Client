@@ -1,4 +1,3 @@
-/* eslint-disable */
 const express = require('express');
 const axios = require('axios');
 require('dotenv').config();
@@ -12,13 +11,13 @@ app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT;
 const uri = process.env.API_IP_ADDRESS;
 
-//RECIPES
+// RECIPES
 app.get('/RecipesByPantry', (req, res) => {
-  var token = req.query.token;
+  const { token } = req.query;
   axios.get(`${uri}/recipes/pantry`, {
     headers: {
-      'Authorization': `Token ${token}`
-    }
+      Authorization: `Token ${token}`,
+    },
   })
     .then((success) => {
       res.send(success.data);
@@ -29,11 +28,11 @@ app.get('/RecipesByPantry', (req, res) => {
 });
 
 app.get('/Recipe/:id', (req, res) => {
-  var token = req.query.token;
+  const { token } = req.query;
   axios.get(`${uri}/recipes/${req.params.id}`, {
     headers: {
-      'Authorization': `Token ${token}`
-    }
+      Authorization: `Token ${token}`,
+    },
   })
     .then((success) => {
       res.send(success.data);
@@ -44,12 +43,12 @@ app.get('/Recipe/:id', (req, res) => {
 });
 
 app.get('/ingredients', (req, res) => {
-  let query = req.query.query;
-  let token = req.query.token;
+  const { query } = req.query;
+  const { token } = req.query;
   axios.get(`${uri}/ingredients?query=${query}`, {
     headers: {
-      'Authorization': `Token ${token}`
-    }
+      Authorization: `Token ${token}`,
+    },
   })
     .then((success) => {
       res.send(success.data);
@@ -60,12 +59,12 @@ app.get('/ingredients', (req, res) => {
 });
 
 app.get('/filteredRecipes', (req, res) => {
-  let ingredients = req.query.ingredients;
-  let token = req.query.token;
+  const { ingredients } = req.query;
+  const { token } = req.query;
   axios.get(`${uri}/recipes?ingredients=${ingredients}`, {
     headers: {
-      'Authorization': `Token ${token}`
-    }
+      Authorization: `Token ${token}`,
+    },
   })
     .then((success) => {
       res.send(success.data);
@@ -75,58 +74,58 @@ app.get('/filteredRecipes', (req, res) => {
     });
 });
 
-//PANTRY
-app.get(`/pantry`, (req, res) => {
-  var id = req.query.id;
-  var token = req.query.token;
+// PANTRY
+app.get('/pantry', (req, res) => {
+  const { id } = req.query;
+  const { token } = req.query;
   axios.get(`${uri}/pantry?id=${id}`, {
     headers: {
-      'Authorization': `Token ${token}`
-    }
+      Authorization: `Token ${token}`,
+    },
   })
-    .then(results => {
-      res.send(results.data)
+    .then((results) => {
+      res.send(results.data);
     })
-    .catch(err => {
-      res.send(err)
+    .catch((err) => {
+      res.send(err);
     })
     .catch((err) => {
       res.send(err);
     });
 });
 
-app.delete(`/pantry`, (req, res) => {
-  var data = req.body.deletion;
-  var token = req.body.token;
+app.delete('/pantry', (req, res) => {
+  const data = req.body.deletion;
+  const { token } = req.body;
   axios.delete(`${uri}/pantry`, {
-    data: data,
+    data,
     headers: {
-      'Authorization': `Token ${token}`
-    }
+      Authorization: `Token ${token}`,
+    },
   })
-    .then(results => {
-      res.send(results.data)
+    .then((results) => {
+      res.send(results.data);
     })
-    .catch(err => {
-      res.send(err)
-    })
+    .catch((err) => {
+      res.send(err);
+    });
 });
 
-app.put(`/pantry`, (req, res) => {
-  var data = req.body.update;
-  var token = req.body.token;
+app.put('/pantry', (req, res) => {
+  const data = req.body.update;
+  const { token } = req.body;
   axios.put(`${uri}/pantry`, data, {
     headers: {
-      'Authorization': `Token ${token}`
-    }
+      Authorization: `Token ${token}`,
+    },
   })
-  .then(results => {
-    res.send(results.data)
-  })
-  .catch(err => {
-    res.send(err)
-  })
-})
+    .then((results) => {
+      res.send(results.data);
+    })
+    .catch((err) => {
+      res.send(err);
+    });
+});
 
 app.post('/pantry/autocomplete', (req, res) => {
   const { value } = req.body;
@@ -134,8 +133,8 @@ app.post('/pantry/autocomplete', (req, res) => {
     .then((ingredients) => {
       const { data } = ingredients;
       const parse = data.map((ingredient) => {
-        const { name, id, possibleUnits} = ingredient;
-        const singleParse = { name, id, possibleUnits};
+        const { name, id, possibleUnits } = ingredient;
+        const singleParse = { name, id, possibleUnits };
         return singleParse;
       });
       res.status(200).send(parse);
@@ -146,7 +145,9 @@ app.post('/pantry/autocomplete', (req, res) => {
 });
 
 app.post('/pantry', (req, res) => {
-  const { itemData, quantity, token, units } = req.body;
+  const {
+    itemData, quantity, token, units,
+  } = req.body;
   if (itemData === undefined) {
     res.status(404).send();
     res.end();
@@ -163,8 +164,8 @@ app.post('/pantry', (req, res) => {
       url: `${uri}/pantry`,
       data: parse,
       headers: {
-        'Authorization': `Token ${token}`,
-      }
+        Authorization: `Token ${token}`,
+      },
     })
       .then((response) => {
         res.status(201).send();
@@ -176,7 +177,7 @@ app.post('/pantry', (req, res) => {
   }
 });
 
-//USERS
+// USERS
 app.get('/auth', (req, res) => {
   axios.get(`${uri}/api/users/current`)
     .then((response) => {})
@@ -190,7 +191,7 @@ app.post('/signup', (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      res.send(err)
+      res.send(err);
     });
 });
 
@@ -201,11 +202,11 @@ app.post('/login', (req, res) => {
       res.send(response.data);
     })
     .catch((err) => {
-      res.send(err)
+      res.send(err);
     });
 });
 
-//Connection
+// CONNECTION
 app.listen(port, () => {
   /* eslint-disable-next-line no-console */
   console.log(`listening on port ${port}`);
