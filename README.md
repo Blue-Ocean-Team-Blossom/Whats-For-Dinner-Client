@@ -1,4 +1,6 @@
 # Whats-For-Dinner-Client:
+(Application Description, Press Release, Problem/Solution, Feedback: https://github.com/Blue-Ocean-Team-Blossom/Whats-For-Dinner-Client/blob/main/_PRESS-RELEASE.md)
+
 Client Side Application with Server Side Rendering.
 
 This is a single page web application for
