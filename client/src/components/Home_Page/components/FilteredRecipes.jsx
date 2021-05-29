@@ -94,7 +94,6 @@ class FilteredRecipe extends React.Component {
       })
   }
 
-
   render() {
     return (
       <div className="filteredContainer">
@@ -116,8 +115,6 @@ class FilteredRecipe extends React.Component {
     )
   }
 }
-
-
 
 export default FilteredRecipe;
 

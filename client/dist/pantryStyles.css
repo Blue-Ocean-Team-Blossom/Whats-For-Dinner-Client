@@ -69,11 +69,8 @@
 }
 
 #updateField {
-  /* align-content: center; */
   text-align: center;
   display: inline-grid;
-  /* width: 20%; */
-  /* grid-template-columns: 20% 20% 20%; */
   height: 1.5em;
   margin: 0 auto;
 }

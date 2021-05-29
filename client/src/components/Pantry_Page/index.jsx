@@ -5,18 +5,12 @@ import PantryList from './PantryList/PantryList';
 
 import { UserContext } from '../../state_&_contexts/UserContext';
 import { PantryContext } from '../../state_&_contexts/PantryContext';
-// import { APIContext } from '../../state_&_contexts/APIContext';
 
 const Pantry = () => {
   const { valid } = useContext(PantryContext);
-  // const { getPantry } = useContext(APIContext);
   const { username } = useContext(UserContext);
 
   var user = username ? username + '\'s ' : username
-
-  // useEffect(() => {
-  //   getPantry();
-  // }, []);
 
   return (
     <div className='pantrySection'>
@@ -27,7 +21,6 @@ const Pantry = () => {
         Please input a valid item.
       </div>
       <PantryForm />
-      {/* <PantryList pantryList={pantry} /> */}
       <PantryList />
     </div>
   );

@@ -1,4 +1,4 @@
-# Whats-For-Dinner-Client
+# Whats-For-Dinner-Client:
 Client Side Application with Server Side Rendering.
 
 This is a single page web application for
@@ -7,49 +7,76 @@ a user has in stock at home, user authentication
 to track the logged in user's pantry, and
 an ingredient filtering recipe list.
 
+The application's data is served from our Whats-For-Dinner-API service:
+https://github.com/Blue-Ocean-Team-Blossom/Whats-For-Dinner-API
 
-The application's data is served from our Whats-For-Dinner-API service.
+## Features:
 
-## Features
+![App Screenshot](http://g.recordit.co/0EfebzqaSh.gif)
+![App Screenshot](./readmeScreenshotsGif/fill_me_in)
+![App Screenshot](./readmeScreenshotsGif/fill_me_in)
+![App Screenshot](./readmeScreenshotsGif/fill_me_in)
+![App Screenshot](http://g.recordit.co/DSViv47G8Q.gif)
+![App Screenshot](http://g.recordit.co/eR1p4uIl1c.gif)
 
-![App Screenshot](./fill_me_in)
+## Authors:
 
-## Authors
+Jeff Heuton,
+Andrew Vo,
+Daniel Suh,
+Jason Tseng,
+Daniel Tseng,
+Zad Castaneda,
+Peter Kwak,
+Ian Ferrier
 
-## Run Locally
+## Running this Application:
 
-Clone the project:
+### Clone the project:
 
 ```bash
-
+  git clone https://github.com/Blue-Ocean-Team-Blossom/Whats-For-Dinner-Client.git
 ```
 
-Go to the project directory:
+### Go to the project directory:
 
 ```bash
-
+  cd Whats-For-Dinner-Client
 ```
 
-Install dependencies:
+### Install dependencies:
 
 ```bash
   npm install
 ```
 
-Setup .env file:
+### Setup .env file:
 
-- Setup a local port.
-- Request API IP address from our team.
+- Fill in a port.
+- Request API IP address from our team, or host your own API instance.
+- If hosting API instance locally, use your `http;//localhost:(YOUR_PORT_FOR_BACKEND)/` for `API_IP_ADDRESS=FILL_ME_IN`
+- If hosting API instance deployed, use the deployed instance's IP address for `API_IP_ADDRESS=FILL_ME_IN`
 
-Start the client server:
+### Bundle and serve:
 
+- For development:
 ```bash
-
+  npm run react-dev
+  npm run server-dev
 ```
 
-In the browser:
+- For production:
+```bash
+  npm run react-prod
+  npm run server-prod
+```
 
-- url: http://localhost:YOUR_PORT_HERE/
+### In the Browser:
+
+- If hosting locally: http://localhost:(YOUR_PORT_HERE)/
+- If deploying: http://(YOUR_IP_ADDRESS_HERE):(YOUR_PORT_HERE)/
+
+### Now Enjoy What's For Dinner App, Cheers mate! :beers:
 
 ## Tech Stack
 
