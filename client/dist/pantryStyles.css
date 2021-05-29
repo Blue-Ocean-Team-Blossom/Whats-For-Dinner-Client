@@ -4,7 +4,6 @@
 }
 
 #pantryList {
-  /* font-size: clamp(0.2em, 1em, 1.5em); */
   width: 80%;
   margin: 0 auto;
   margin-top: 2%;
@@ -62,7 +61,6 @@
   margin: 0 auto;
 }
 
-
 #updateQuantity {
   width: 60%;
   margin: 0 auto;
@@ -106,10 +104,14 @@
   height: 1.5vw;
 }
 
-#pantrySection button:hover {
+.pantrySection button:hover {
   cursor: pointer;
   transform: scale(1.05);
   background-position: bottom left;
+}
+
+.pantrySection button:active {
+  transform: scale(0.90);
 }
 
 #itemButtons {

@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import { Select } from 'react-select';
 import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import IngredientsList from './IngredientsList.jsx';

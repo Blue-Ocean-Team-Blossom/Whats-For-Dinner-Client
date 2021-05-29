@@ -13,11 +13,9 @@ https://github.com/Blue-Ocean-Team-Blossom/Whats-For-Dinner-API
 ## Features:
 
 ![App Screenshot](http://g.recordit.co/0EfebzqaSh.gif)
-![App Screenshot](./readmeScreenshotsGif/fill_me_in)
-![App Screenshot](./readmeScreenshotsGif/fill_me_in)
-![App Screenshot](./readmeScreenshotsGif/fill_me_in)
+![App Screenshot](http://g.recordit.co/qH7hCn6f2k.gif)
 ![App Screenshot](http://g.recordit.co/DSViv47G8Q.gif)
-![App Screenshot](http://g.recordit.co/eR1p4uIl1c.gif)
+![App Screenshot](http://g.recordit.co/5qbjm1EV2X.gif)
 
 ## Authors:
 
@@ -76,17 +74,57 @@ Ian Ferrier
 - If hosting locally: http://localhost:(YOUR_PORT_HERE)/
 - If deploying: http://(YOUR_IP_ADDRESS_HERE):(YOUR_PORT_HERE)/
 
-### Now Enjoy What's For Dinner App, Cheers mate! :beers:
+### Now Enjoy What's For Dinner App, Cheers mate!
+:beers: :beers: :beers: :beers: :beers:
+:stew: :poultry_leg: :spaghetti: :apple: :egg:
 
 ## Tech Stack
 
 **Client Dependencies:**
 
+- axios
+- react
+- react-dom
+- react-infinite-scroll-component
+- jquery
+- html-react-parser
+
 **Server Dependencies:**
+- @babel/core
+- @babel/plugin-transform-runtime
+- @babel/preset-env
+- @babel/preset-react
+- @babel/runtime
+- babel
+- babel-loader
+- axios
+- dotenv
+- webpack
+- webpack-cli
+- forever
+- express
+
+**Additional Dev Deps:**
+- nodemon
 
 **Test Dependencies:**
+- @wojtekmaj/enzyme-adapter-react-17
+- enzyme
+- jest-enzyme
+- jest
+- jest-css-modules-transfom
+- babel-jest
 
-**Lint Dependencies:**
+**Lint Dependencies (Tied in with Webpack):**
+AirBnB ruleset (with changes)
+- babel-eslint
+- eslint
+- eslint-config-airbnb
+- eslint-loader
+- eslint-plugin-import
+- eslint-plugin-jsx-a11y
+- eslint-plugin-react
+- eslint-plugin-react-hooks
 
 ## Running Tests
 
